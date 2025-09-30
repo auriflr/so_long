@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/09/30 11:29:40 by babyf            ###   ########.fr       */
+/*   Updated: 2025/09/30 15:55:30 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 #define SO_LONG
 
 /* # include <mlx.h> to download */
+# include "../mlx2/mlx.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft.h"
+# include "../libft/lib/libft.h"
 # include "../libft/lib/ft_printf.h"
 # include "../libft/lib/get_next_line.h"
 
@@ -47,9 +48,12 @@ typedef struct	s_point
 
 typedef	struct	s_game
 {
-	/* data */
+	void		*mlx;
+	void		*window; /* pointer window */
+	int			collect;
+	int			e_counter;
+	int			p_counter;
 }				t_game;
-
 
 /* parsing / error handling */
 
