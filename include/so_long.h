@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/09/30 15:55:30 by babyf            ###   ########.fr       */
+/*   Updated: 2025/09/30 16:07:51 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,22 @@ ESC to exit */
 
 
 /* structs */
-/* a 2D point for the map */
-typedef struct	s_point
-{
-	int	x;
-	int	y;
-}				t_point;
 
 typedef	struct	s_game
 {
 	void		*mlx;
 	void		*window; /* pointer window */
+	void		*map;
+	struct s_graphics	*image; /* to change */
 	int			collect;
 	int			e_counter;
 	int			p_counter;
 }				t_game;
+
+typedef struct	s_graphics
+{
+	
+}				t_graphics;
 
 /* parsing / error handling */
 
