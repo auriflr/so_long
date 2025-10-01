@@ -9,14 +9,14 @@ MINILIBX = $(MINILIBX_PATH)/libmlx.a
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
-SRC = src/main.c
+SRC = src/main.c src/map_parsing.c 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
 	gcc $(OBJ) $(LDFLAGS) $(LIBFT) $(MINILIBX) -o $(NAME)
-	@echo "\033[0;32mso_long is ready"
+	@echo "\033[0;32mso_long compiled OK! Hope you're ready to play!"
 
 %.o: %.c
 	gcc $(CFLAGS) -I/usr/include -I$(LIBFT_PATH) -O3 -c $< -o $@
