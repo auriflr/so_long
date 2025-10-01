@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/01 16:07:22 by babyf            ###   ########.fr       */
+/*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
+/*   Updated: 2025/10/01 16:07:18 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/* calloc for init */
-/* remove new line */
+/* initialize map (with calloc, so it's set to 0) */
 
-int	main()
-{
-	t_game	*game;
+/* initialize graphics */
 
-	game = (t_game *)malloc(sizeof(t_game));
-	if (!game)
-		return (0);
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		return (0);
-	game->window = mlx_new_window(game->mlx, 300, 300, "So_long");
-	mlx_loop(game->mlx);
-	return (0);
-}
+/* create map */
+
+/* create graphics */
+
+/* create struct */
