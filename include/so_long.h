@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/01 16:07:26 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/03 14:43:26 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,19 @@ typedef	struct	s_game
 	int					p_counter;
 	int					row_l;
 	int					rows;
+	int					height;
+	int					width;
 	int					p_x;
 	int					p_y;
 }				t_game;
 
 typedef struct	s_graphics
 {
-	
+	void	*player;
+	void	*collect;
+	void	*map;
+	void	*wall;
+	void	*exit;
 }				t_graphics;
 
 /* map parsing / error handling */
@@ -76,6 +82,13 @@ int		check_map(t_game *game);
 void	free_matrix(char **matrix);
 void	check_matrix(char **matrix);
 void	fill(char **matrix, int x, int y, t_game *game);
+
+/* initialize / create */
+t_game		*init_map(void);
+t_game		*create_map(t_game *game);
+t_game		*create_struct(t_game *game);
+t_graphics	*init_graphics(void);
+t_graphics	*create_graph(t_game *game);
 
 /* moves */
 
