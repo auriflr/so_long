@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/03 14:43:26 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/03 15:17:30 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,11 @@ ESC to exit */
 
 typedef	struct	s_game
 {
+	struct s_graphics	*image;
 	char				**map; /* the map is a matrix */
+	char				*file;
 	void				*mlx;
 	void				*window; /* pointer window */
-	struct s_graphics	*image; /* to change */
 	int					collect;
 	int					e_counter;
 	int					p_counter;
@@ -89,6 +90,12 @@ t_game		*create_map(t_game *game);
 t_game		*create_struct(t_game *game);
 t_graphics	*init_graphics(void);
 t_graphics	*create_graph(t_game *game);
+
+/* exit */
+void	free_map(t_game *game);
+void	free_graphics(t_game *game);
+void	close_window(t_game *game);
+int		close_game(t_game *game);
 
 /* moves */
 

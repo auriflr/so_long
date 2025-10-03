@@ -9,7 +9,8 @@ MINILIBX = $(MINILIBX_PATH)/libmlx.a
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
-SRC = src/main.c src/map_parsing.c 
+SRC = src/main.c src/map_parsing.c src/flood_fill.c src/exit.c 	src/create.c
+
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
@@ -26,9 +27,18 @@ clean:
 	make -C $(MINILIBX_PATH) clean
 	make -C $(LIBFT_PATH) clean
 
+fclean: clean
+	rm -f $(NAME)
+	make -C $(MINILIBX_PATH) clean
+	make -C $(LIBFT_PATH) clean
+
+re: fclean all
+
 $(MINILIBX):
 	chmod 777 $(MINILIBX_PATH)
 	make -C $(MINILIBX_PATH)
 
 $(LIBFT):
 	make -C $(LIBFT_PATH)
+
+.PHONY: all clean fclean re

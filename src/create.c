@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/03 14:44:25 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/03 15:17:34 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ t_graphics	*create_graph(t_game *game)
 	return (game->image);
 }
 
+/* create struct */
 /* needs a function that exits the game at error */
 t_game	*create_struct(t_game *game)
 {
 	if (!game)
 		return (-1);
 }
-/* create struct */

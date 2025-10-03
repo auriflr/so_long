@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/03 14:40:03 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/03 15:29:45 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,20 @@
 /* checks 1) if map is valid, 2) if the map is technically valid, it checks the shape */
 int		is_rectangular(t_game *game)
 {
-	int	i;
-	int	len_rows;
-	int	num_rows;
-
-	num_rows = 0;
-	i = 0;
-	len_rows = ft_strlen(game->map[i]);
-	while (len_rows != NULL)
+	int		i;
+	size_t	len_rows;
+	
+	if (!game || !game->map || !game->map[0])
+		return (ft_printf("Error: Map invalid or empty.\n"), -1);
+	len_rows = ft_strlen(game->map[0]);
+	i = 1;
+	while (game->map[i])
 	{
 		if (ft_strlen(game->map[i]) != len_rows)
 			return (ft_printf("Error: Map is not valid.\n"), -1);
 		i++;
 	}
-		num_rows++;
-		if (num_rows == len_rows)
-			return (ft_printf("Error: Map must be rectangular.\n"), -1);
-		return (0);
+	return (0);
 }
 
 /* checks that all the outside corners of the map are walls */
@@ -115,7 +112,7 @@ int		map_parsing(t_game *game)
 
 int		check_map(t_game *game)
 {
-	if (is_rectangular(game) < 0 || is_enclosed(game) < 0 || map_parsing(game) < 0)
+	if (is_rectangular(game) < 0 || is_enclosed(game->map) < 0 || map_parsing(game) < 0)
 	/* should exit game, return to change */
 		return (ft_printf("Error occured. Check shape, walls and cells.\n") -1);
 	/* flood_fill */
