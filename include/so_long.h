@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/03 15:17:30 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/03 18:13:29 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ int		map_parsing(t_game *game);
 int		check_map(t_game *game);
 
 /* fill map */
-void	free_matrix(char **matrix);
-void	check_matrix(char **matrix);
 void	fill(char **matrix, int x, int y, t_game *game);
+void	free_matrix(char **matrix);
+int		check_matrix(char **matrix);
 
 /* initialize / create */
 t_game		*init_map(void);

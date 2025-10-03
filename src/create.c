@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/03 15:17:34 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/03 18:12:23 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_game	*init_map(void)
 	
 	game = (t_game *)calloc(1, sizeof(t_game));
 	if (!game)
-		return ;
+		return (NULL);
 	return (game);
 }
 
@@ -30,7 +30,7 @@ t_graphics	*init_graphics(void)
 
 	graphics = (t_graphics *)calloc(1, sizeof(t_graphics));
 	if (!graphics)
-		return ;
+		return (NULL);
 	return (graphics);
 }
 
@@ -56,8 +56,8 @@ t_graphics	*create_graph(t_game *game)
 
 /* create struct */
 /* needs a function that exits the game at error */
-t_game	*create_struct(t_game *game)
+/*t_game	*create_struct(t_game *game)
 {
 	if (!game)
-		return (-1);
-}
+		return (NULL);
+}*/

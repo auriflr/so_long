@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:47:02 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/03 15:17:32 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/03 18:11:16 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,12 @@ void	close_window(t_game *game)
 		mlx_destroy_window(game->mlx, game->window);
 	if (game->mlx)
 	{
-		mlx_destroy_display(game->mlx);
+		mlx_destroy_window(game->mlx, game->window); /* destroy display on linux*/
 		free(game->mlx);
 	}
 	if (game->map)
-		free_map(game->map);
+		/* free_map (game->map) */
+		free_map(game);
 }
 
 int	close_game(t_game *game)
