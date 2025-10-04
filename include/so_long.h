@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/03 18:13:29 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/04 09:27:17 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	free_matrix(char **matrix);
 int		check_matrix(char **matrix);
 
 /* initialize / create */
+void		create_window(t_game *game);
 t_game		*init_map(void);
 t_game		*create_map(t_game *game);
 t_game		*create_struct(t_game *game);
