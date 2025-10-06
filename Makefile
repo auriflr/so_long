@@ -9,7 +9,7 @@ MINILIBX = $(MINILIBX_PATH)/libmlx.a
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
 
-SRC = src/main.c src/map_parsing.c src/flood_fill.c src/exit.c 	src/create.c
+SRC = src/main.c src/map_parsing.c src/flood_fill.c src/close.c src/create.c
 
 OBJ = $(SRC:.c=.o)
 

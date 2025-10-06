@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/03 15:29:45 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/05 15:28:08 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,10 @@ int		map_parsing(t_game *game)
 int		check_map(t_game *game)
 {
 	if (is_rectangular(game) < 0 || is_enclosed(game->map) < 0 || map_parsing(game) < 0)
-	/* should exit game, return to change */
+	{
+		close_game(game);
 		return (ft_printf("Error occured. Check shape, walls and cells.\n") -1);
+	}
 	/* flood_fill */
 	return (0);
 }
