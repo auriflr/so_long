@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/04 09:27:15 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:54:16 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	create_window(t_game *game)
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		free(game);
-	/*game->window = mlx_new_window(game->mlx, (TILESIZE * game->row_l). (TILESIZE * game->rows), "So Long");*/
+	game->window = mlx_new_window(game->mlx, (TILESIZE * game->row_l), (TILESIZE * game->rows), "So Long");
 	if (!game->window)
 	{
 		close_game(game);
@@ -25,8 +25,6 @@ void	create_window(t_game *game)
 	}
 		
 }
-/* calloc for init */
-/* remove new line */
 
 int	main()
 {
@@ -38,7 +36,12 @@ int	main()
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (0);
-	game->window = mlx_new_window(game->mlx, 300, 300, "So_long");
+	game->window = mlx_new_window(game->mlx, 300, 300, "so_long");
 	mlx_loop(game->mlx);
+	/* while (ac != 2)
+	{
+
+	}
+	close_game(game); */
 	return (0);
 }

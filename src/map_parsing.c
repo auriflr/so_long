@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/05 15:28:08 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:44:33 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int		map_parsing(t_game *game)
 	return (0);
 }
 
+/* in the main */
 int		check_map(t_game *game)
 {
 	if (is_rectangular(game) < 0 || is_enclosed(game->map) < 0 || map_parsing(game) < 0)
