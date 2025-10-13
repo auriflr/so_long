@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/12 16:54:16 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/13 16:53:19 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,5 @@ int	main()
 		return (0);
 	game->window = mlx_new_window(game->mlx, 300, 300, "so_long");
 	mlx_loop(game->mlx);
-	/* while (ac != 2)
-	{
-
-	}
-	close_game(game); */
 	return (0);
 }
