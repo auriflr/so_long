@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:47:02 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/16 16:44:39 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/16 17:07:23 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,11 @@ int	close_game(t_game *game, const char *error_msg)
 		ft_printf("%s\n", error_msg);
 	if (game)
 	{
-		if (game->graphics)
+		if (game->image)
 			free_graphics(game);
+		/* function doesn't work on macos
 		if (game->mlx)
-			mlx_loop_end(game->mlx);
+			mlx_loop_end(game->mlx); */
 		if (game->mlx && game->window)
 		{
 			mlx_destroy_window(game->mlx, game->window);
@@ -89,9 +90,10 @@ int	close_game(t_game *game, const char *error_msg)
 		}
 		if (game->mlx)
 		{
-			mlx_destroy_display(game->mlx);
+			/* function doesn't exist on macos */
+			/* mlx_destroy_display(game->mlx); */
 			free (game->mlx);
-			game->mlx;
+			game->mlx = NULL;
 		}
 		free_map (game);
 	}
