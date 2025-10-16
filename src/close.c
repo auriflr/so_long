@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:47:02 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/13 17:32:44 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/16 16:44:39 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,29 @@ void	close_window(t_game *game)
 		free_map(game);
 }
 
-int	close_game(t_game *game)
+int	close_game(t_game *game, const char *error_msg)
 {
-	close_window(game);
+	if (error_msg)
+		ft_printf("%s\n", error_msg);
+	if (game)
+	{
+		if (game->graphics)
+			free_graphics(game);
+		if (game->mlx)
+			mlx_loop_end(game->mlx);
+		if (game->mlx && game->window)
+		{
+			mlx_destroy_window(game->mlx, game->window);
+			game->window = NULL;
+		}
+		if (game->mlx)
+		{
+			mlx_destroy_display(game->mlx);
+			free (game->mlx);
+			game->mlx;
+		}
+		free_map (game);
+	}
 	exit(EXIT_SUCCESS);
-	return (0);
+	return(0);
 }

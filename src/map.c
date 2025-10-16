@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 09:22:41 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/16 16:39:06 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/16 16:50:50 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,19 +90,10 @@ void	read_map(t_game *game)
 {
 	ft_printf("Analyzing map input...hold steady...\n");
 	if (map_size(game) < 0)
-	{
-		ft_printf("Error:\nMap not found.\n");
-		close_game(game);
-	}
+		close_game(game, "Error:\nMap not found.\n");
 	if (create_matrix(game) < 0)
-	{
-		ft_printf("Error:\n Malloc in matrix failed.\n");
-		close_game(game);
-	}
+		close_game(game, "Error:\n Malloc in matrix failed.\n");
 	if (fill_map(game) == NULL)
-	{
-		ft_printf("Error:\nError in map reading.\n");
-		close_game(game);
-	}
+		close_game(game, "Error:\nError in map reading.\n");
 	ft_printf("Reading map...\nDone.\n");
 }

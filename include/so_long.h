@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/06 15:50:42 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/16 16:45:00 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ t_graphics	*create_graph(t_game *game);
 void	free_map(t_game *game);
 void	free_graphics(t_game *game);
 void	close_window(t_game *game);
-int		close_game(t_game *game);
+int		close_game(t_game *game, const char *error_msg);
 
 /* moves */
 

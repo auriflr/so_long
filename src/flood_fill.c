@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:20:53 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/15 16:43:32 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/16 16:46:41 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,14 @@ void	flood_fill(t_game *game)
 	i = 0;
 	matrix = (char **)malloc((game->rows + 1) * sizeof(char *));
 	if (!matrix)
-	{
-		ft_printf("Error: Flood fill failed.\n");
-		close_game(game);
-	}
+		close_game(game, "Error:\nFlood fill failed.\n");
 	while (i < game->rows)
 	{
 		matrix[i] = ft_strdup(game->map[i]);
 		if (!matrix[i])
 		{
 			free_matrix(matrix);
-			ft_printf("Error: Flood fill failed.\n");
-			close_game(game);
+			close_game(game, "Error:\nFlood fill failed.\n");
 		}
 		i++;
 	}
@@ -96,7 +92,7 @@ void	flood_fill(t_game *game)
 	if (check_matrix(matrix) < 0)
 	{
 		ft_printf("Path not valid\n");
-		close_game(game);
+		close_game(game, "Error:\nPath not valid\n");
 	}
 	free_matrix(matrix);
 }

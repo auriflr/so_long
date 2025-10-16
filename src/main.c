@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/13 16:53:19 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/16 16:47:24 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@ void	create_window(t_game *game)
 		free(game);
 	game->window = mlx_new_window(game->mlx, (TILESIZE * game->row_l), (TILESIZE * game->rows), "So Long");
 	if (!game->window)
-	{
-		close_game(game);
-		ft_printf ("Error: Window not created.\n");
-	}
-		
+		close_game(game, "Error:\nWindow not created.\n");
 }
 
 int	main()
