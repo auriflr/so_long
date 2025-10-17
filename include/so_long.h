@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/16 16:59:59 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/17 11:33:43 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 and then escape by choosing the shortest possible route. 
 Maps are built from characters:
 1 for walls
-0 for (walking) spaces
+0 for walking spaces
 C for Collectibles
 P for Player
 E for exit 
@@ -48,19 +48,19 @@ ESC to exit */
 typedef	struct	s_game
 {
 	struct s_graphics	*image;
-	char				**map; /* the map is a matrix */
+	char				**map;
 	char				*file;
 	void				*mlx;
-	void				*window; /* pointer window */
+	void				*window;
 	int					collect;
-	int					e_counter;
-	int					p_counter;
-	int					row_l;
+	int					exit;
+	int					player;
+	int					p_x;
+	int					p_y;
+	int					cols;
 	int					rows;
 	int					height;
 	int					width;
-	int					p_x;
-	int					p_y;
 }				t_game;
 
 typedef struct	s_graphics
@@ -73,11 +73,12 @@ typedef struct	s_graphics
 }				t_graphics;
 
 /* map parsing / error handling */
-int		is_rectangular(t_game *game);
-int		is_enclosed(char **map);
-int		check_char_cell(t_game *game, int i, int j);
-int		map_parsing(t_game *game);
-int		check_map(t_game *game);
+void	ft_errormsg(t_game *game, const char *msg);
+void	is_enclosed(t_game *game);
+void	check_rows(t_game *game);
+void	is_rectangular(t_game *game);
+void	element_parsing(t_game *game);
+void	check_map(t_game *game);
 
 /* read map */
 void	read_map(t_game *game);
@@ -94,18 +95,21 @@ void	flood_fill(t_game *game);
 
 
 /* initialize / create */
-void		create_window(t_game *game);
+void		open_window(t_game *game);
 t_game		*init_map(void);
 t_game		*create_map(t_game *game);
 t_game		*create_struct(t_game *game);
 t_graphics	*init_graphics(void);
 t_graphics	*create_graph(t_game *game);
 
+/* player functions */
+
+
 /* exit */
 void	free_map(t_game *game);
 void	free_graphics(t_game *game);
 void	close_window(t_game *game);
-int		close_game(t_game *game, const char *error_msg);
+int		close_game(t_game *game, const char *ft_errormsg);
 
 /* moves */
 

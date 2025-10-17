@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/16 16:56:28 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/16 22:23:26 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ t_game	*init_map(void)
 	return (game);
 }
 
+/* create map */
+t_game	*create_map(t_game *game)
+{
+	game = (t_game *)malloc(sizeof(t_game));
+	if (!game)
+		return (NULL);
+	game = init_map();
+	return (game);
+}
+
 /* initialize graphics with calloc */
 t_graphics	*init_graphics(void)
 {
@@ -32,16 +42,6 @@ t_graphics	*init_graphics(void)
 	if (!graphics)
 		return (NULL);
 	return (graphics);
-}
-
-/* create map */
-t_game	*create_map(t_game *game)
-{
-	game = (t_game *)malloc(sizeof(t_game));
-	if (!game)
-		return (NULL);
-	game = init_map();
-	return (game);
 }
 
 /* create graphics */

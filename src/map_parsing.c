@@ -6,115 +6,105 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/16 16:49:35 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/17 11:33:30 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/* checks 1) if map is valid, 2) if the map is technically valid, it checks the shape */
-int		is_rectangular(t_game *game)
+/* checks the shape of the map */
+void	is_rectangular(t_game *game)
 {
 	int		i;
-	size_t	len_rows;
-	
-	if (!game || !game->map || !game->map[0])
-		return (ft_printf("Error: Map invalid or empty.\n"), -1);
-	len_rows = ft_strlen(game->map[0]);
-	i = 1;
-	while (game->map[i])
+
+	i = 0;
+	while (i < game->rows - 1)
 	{
-		if (ft_strlen(game->map[i]) != len_rows)
-			return (ft_printf("Error: Map is not valid.\n"), -1);
+		if ((size_t) ft_strlen(game->map[i] -1 != game->cols))
+			ft_errormsg(game, "Map is not rectangular.");
 		i++;
 	}
-	return (0);
+	if (game->cols == game->rows)
+		ft_errormsg(game, "Map is a square.");
 }
 
 /* checks that all the outside corners of the map are walls */
-int		is_enclosed(char **map)
-{
-	int	i;
-	int	len_rows;
-	int	last_row;
-
-	i = 0;
-	last_row = 0;
-	while (map[last_row] != NULL)
-		last_row++;
-	last_row--;
-	while (map[i])
-	{
-		len_rows = 0;
-		while (map[i][len_rows])
-		{
-			if ((i == 0 || i == last_row) && map[i][len_rows] != '1')
-				return (ft_printf("Error: Map must be enclosed in walls.\n"), -1);
-			len_rows++;
-			if (map[i][0] != '1' || map[i][ft_strlen(map[i])- 1] != '1')
-				return (ft_printf("Error: Map must be enclosed in walls.\n"), -1);
-			i++;
-		}
-	}
-	return (0);
-}
-
-/* checks that the char characters in the map are set as the should
-1 P
-1 E
-C for collectibles (no limit) */
-int		check_char_cell(t_game *game, int i, int j)
-{
-	if (game->map[i][j] == 'P')
-	{
-		if (!game->p_counter)
-		{
-			game->p_counter++;
-			game->p_x = j;
-			game->p_y = i;
-		}
-		else
-			return (ft_printf("Error: Too many players.\n"), -1);
-	}
-	else if (game->map[i][j] == 'E')
-	{
-		if (!game->e_counter)
-			game->e_counter++;
-		else
-			return(ft_printf("Error: Too many exits.\n"), -1);
-	}
-	else if (game->map[i][j] == 'C')
-		game->collect++;
-	return (0);
-}
-
-int		map_parsing(t_game *game)
+void		is_enclosed(t_game *game)
 {
 	int	i;
 	int	j;
-
+	
 	i = 0;
-	while (game->map[i] != NULL)
+	while (i < game->rows)
 	{
 		j = 0;
-		while (game->map[i][j])
+		while (j < game->cols)
 		{
-			if (check_char_cell(game, i, j) < 0)
-				return (-1);
+			if (i == 0 || i == (game->rows - 1))
+				if (game->map[i][j] != '1')
+					ft_errormsg(game, "Map rows borders are not walls.");
+			if (j == 0 || j == (game->cols -1))
+				if (game->map[i][j] != '1')
+					ft_errormsg(game, "Map collons borders are not walls");
 			j++;
 		}
 		i++;
 	}
-	if (game->p_counter == 0 || game->e_counter == 0 || game->collect == 0)
-			return (ft_printf("Error: Missing P, E or C. Check map.\n"), -1);
-	return (0);
+}
+/* checks only the rows. Verify redundancy. */
+void	check_rows(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->cols)
+	{
+		if (game->map[game->rows - 1] != '1')
+			ft_errormsg(game, "Invalid map.");
+		i++;
+	}
+	if (game->map[game->rows -1][i] != '\0' && \
+		game->map[game->rows - 1][i] != '\n')
+		ft_errormsg(game, "Invalid map.");
 }
 
-/* in the main */
-int		check_map(t_game *game)
+/* element parsing */
+void	element_parsing(t_game *game)
 {
-	if (is_rectangular(game) < 0 || is_enclosed(game->map) < 0 || map_parsing(game) < 0)
-		close_game(game, "Error:\nCheck shape, walls and cells.\n");
-	/* flood_fill */
-	return (0);
+	int i;
+	int	j;
+
+	i = 0;
+	while (i < game->rows)
+	{
+		j = -1;
+		while (++j < game->cols)
+		{
+			if (game->map[i][j] == 'P') /* update condition so it checks it's 1 P */
+			{
+				game->player++;
+				game->p_x = i;
+				game->p_y = j;
+			}
+			else if (game->map[i][j] == 'C')
+				game->collect++;
+			else if (game->map[i][j] == 'E') /* update condition so it checks it's 1 E */
+				game->exit++;
+			else if (game->map[i][j] != '1' && game->map != '0')
+				ft_errormsg(game, "Invalid element.");
+		}
+	}
+}
+
+void	check_map(t_game *game)
+{
+	is_enclosed(game);
+	rows_check(game);
+	is_rectangular(game);
+	element_parsing(game);
+	if (game->exit != 1 || game->collect < 1 || game->player != 1)
+	{
+		/* free maps */
+		ft_errormsg(game, "Too many players or exit, or too few collectibles.");
+	}
 }

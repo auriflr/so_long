@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 09:22:41 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/16 16:50:50 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/17 10:54:46 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	map_size(t_game *game)
 	char	**line;
 
 	game->rows = 0;
-	game->row_l = 0;
+	game->cols = 0;
 	fd = open(game->file, O_RDONLY);
 	if (fd < 0)
 		return (-1);
@@ -38,8 +38,8 @@ int	map_size(t_game *game)
 		len = 0;
 		while (line[len] && line[len] != '\n')
 			len++;
-		if (game->row_l == 0)
-			game->row_l == len;
+		if (game->cols == 0)
+			game->cols == len;
 		game->rows++;
 		free(line);
 		line = get_next_line(fd);

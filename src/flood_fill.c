@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:20:53 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/16 16:46:41 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/17 10:54:55 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	check_matrix(char **matrix)
 			if (matrix[i][j] == 'E' || matrix[i][j] == 'C')
 			{
 				free_matrix(matrix);
-				/* print the matrix */
 				return (-1);
 			}	
 			j++;
@@ -51,7 +50,7 @@ int	check_matrix(char **matrix)
 
 void	fill(char **matrix, int x, int y, t_game *game)
 {
-	if (x < 0 || y < 0 || x >= game->row_l || y >=game->rows)
+	if (x < 0 || y < 0 || x >= game->cols || y >=game->rows)
 		return ;
 	if (matrix[x][y] == '1' || matrix[x][y] == 'F')
 		return ;

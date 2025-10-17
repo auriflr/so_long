@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:47:02 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/16 17:07:23 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/17 11:03:58 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,10 @@ void	close_window(t_game *game)
 		free_map(game);
 }
 
-int	close_game(t_game *game, const char *error_msg)
+int	close_game(t_game *game, const char *ft_errormsg)
 {
-	if (error_msg)
-		ft_printf("%s\n", error_msg);
+	if (ft_errormsg)
+		ft_printf("%s\n", ft_errormsg);
 	if (game)
 	{
 		if (game->image)
