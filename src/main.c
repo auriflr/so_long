@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/17 11:03:58 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/17 15:23:48 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	open_window(t_game *game)
 	/* handle images */
 }
 
-int	main(int ac, char **av)
+/* just for testing */
+int	main()
 {
 	/* not sure if allocating memory is gonna be necessary */
 	t_game	*game;
@@ -42,10 +43,6 @@ int	main(int ac, char **av)
 	game = (t_game *)malloc(sizeof(t_game));
 	if (!game)
 		return (0);
-	if (ac != 2)
-		ft_errormsg (game, "Two arguments needed.");
-	if (!ft_strnstr(av[1] + ft_strlen(av[1]) - 4, ".ber", 4))
-		ft_errormsg (game, "Map must be a .ber file.");
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return (0);
@@ -53,3 +50,31 @@ int	main(int ac, char **av)
 	mlx_loop(game->mlx);
 	return (0);
 }
+
+/* 
+int		main(int ac, char **av)
+{
+	t_game		*game;
+	t_graphics	*graphics;
+
+	if (ac == 2)
+	{
+		if (!ft_strnstr(av[1] + ft_strlen(av[1]) - 4, ".ber", 4))
+			ft_errormsg(game, "Map must be a .ber file.");
+		game = create_map(game);
+		if (!game)
+			ft_errormsg(game, "Map wasn't created.");
+		read_map(game);
+		check_map(game);
+		create_struct(game);
+		create_window(game);
+		render_map(game);
+		create_loop(game);
+		return (0);
+	}
+	else if (ac != 2)
+		ft_erromsg(game, "Program needs two arguments.");
+	else
+		ft_errormsg(game, "A map is needed to play the game.");
+}
+*/

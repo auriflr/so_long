@@ -6,15 +6,15 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:03:34 by afloris           #+#    #+#             */
-/*   Updated: 2025/09/11 14:48:48 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/17 15:29:20 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	size_t	len;
+	int	len;
 
 	len = 0;
 	while (s[len] != '\0')

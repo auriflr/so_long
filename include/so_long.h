@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/17 11:33:43 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/17 15:23:43 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct	s_graphics
 	void	*exit;
 }				t_graphics;
 
-/* map parsing / error handling */
+/* map parsing / error handling  OK (for now)*/
 void	ft_errormsg(t_game *game, const char *msg);
 void	is_enclosed(t_game *game);
 void	check_rows(t_game *game);
