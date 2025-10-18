@@ -6,11 +6,11 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 17:47:28 by afloris           #+#    #+#             */
-/*   Updated: 2025/02/21 15:38:54 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/18 10:36:18 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../lib/get_next_line.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>

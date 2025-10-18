@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
+/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 16:53:45 by afloris           #+#    #+#             */
-/*   Updated: 2025/02/17 16:34:54 by afloris          ###   ########.fr       */
+/*   Updated: 2025/10/18 10:38:35 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../lib/get_next_line.h"
 #include <unistd.h>
 #include <stdlib.h>
 
