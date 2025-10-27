@@ -6,13 +6,13 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/17 15:30:59 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/19 22:43:56 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/* this file was thoroughly checked. */
+/* this file was thoroughly checked */
 
 /* checks the shape of the map */
 void	is_rectangular(t_game *game)
