@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mread.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 09:22:41 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/18 10:34:30 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/30 13:35:16 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/* start again here! */
-
+/* OK */
 void	remove_nl(char *line)
 {
 	int	len;

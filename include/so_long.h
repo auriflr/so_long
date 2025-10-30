@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/18 10:49:38 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/30 14:24:45 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include <stddef.h>
 # include "../libft/lib/libft.h"
 # include "../libft/lib/ft_printf.h"
 # include "../libft/lib/get_next_line.h"
-# include "../mlx2/mlx.h"
+# include "../mlx/mlx.h"
 
-# define TILESIZE 32 /* eventually change to 64 for more details */
-# define UP 13 /* 119 for linux */
-# define DOWN 1 /* 115 for linux */
-# define LEFT 0 /* 97 for linux */
-# define RIGHT 2 /* 100 for linux */
+# define TILESIZE 32
+# define UP 119 
+# define DOWN 115
+# define LEFT 97
+# define RIGHT 100 
 
 /* The player’s goal is to collect all collectibles on the map 
 and then escape by choosing the shortest possible route. 
@@ -61,18 +64,24 @@ typedef	struct	s_game
 	int					rows;
 	int					height;
 	int					width;
+	int					tilesize;
+	int					score;
+	int					moves;
 }				t_game;
 
 typedef struct	s_graphics
 {
 	void	*player;
 	void	*collect;
-	void	*map;
+	void	*floor;
 	void	*wall;
 	void	*exit;
+	void	*map;
 }				t_graphics;
 
-/* map parsing / error handling  OK (for now)*/
+/* fix files and function library */
+
+/* map parsing / error handling */
 void	ft_errormsg(t_game *game, const char *msg);
 void	is_enclosed(t_game *game);
 void	check_rows(t_game *game);
@@ -80,21 +89,19 @@ void	is_rectangular(t_game *game);
 void	element_parsing(t_game *game);
 void	check_map(t_game *game);
 
-/* read map */
+/* map handling  */
+int		create_matrix(t_game *game);
+int		check_matrix(char **matrix);
+int		map_size(t_game *game);
+void	free_matrix(char **matrix);
 void	read_map(t_game *game);
 void	remove_nl(char *line);
-int		create_matrix(t_game *game);
-int		map_size(t_game *game);
-char	**fill_map(t_game *game);
-
-/* fill map */
-int		check_matrix(char **matrix);
-void	free_matrix(char **matrix);
 void	fill(char **matrix, int x, int y, t_game *game);
 void	flood_fill(t_game *game);
-
+char	**fill_map(t_game *game);
 
 /* initialize / create */
+void		create_loop(t_game *game);
 void		open_window(t_game *game);
 t_game		*init_map(void);
 t_game		*create_map(t_game *game);
@@ -102,16 +109,19 @@ t_game		*create_struct(t_game *game);
 t_graphics	*init_graphics(void);
 t_graphics	*create_graph(t_game *game);
 
-/* player functions */
-
+/* graphics & moves */
+void    set_graphics(t_game *game);
+void    put_image(t_game *game, void *image, int x, int y);
+void    render_map(t_game *game, int i);
+void    update_player_graphics(int keysym, t_game *game);
+void    update_position(int keysym, t_game *game, int *new_x, int *new_y);
+void	move_player(int keysym, t_game *game);
 
 /* exit */
+int		key_down(int keysym, t_game *game);
+int		close_game(t_game *game, const char *err_msg);
 void	free_map(t_game *game);
 void	free_graphics(t_game *game);
-void	close_window(t_game *game);
-int		close_game(t_game *game, const char *ft_errormsg);
-
-/* moves */
 
 
 #endif

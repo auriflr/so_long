@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:47:02 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/17 11:03:58 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/30 14:22:15 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+/* OK */
+/* easy function for error messages */
+void	ft_errormsg(t_game *game, const char *msg)
+{
+	ft_printf("Error:\n %s\n", msg);
+	if (game->map)
+		free (game->map);
+}
+
+int	key_down(int keysym, t_game *game)
+{
+	if (keysym == XK_Escape)
+		close_game(game, "Quit by user.\n");
+	else
+		move_player(keysym, game);
+	return (0);
+}
 
 /* free map */
 void	free_map(t_game *game)
@@ -38,8 +55,7 @@ void	free_map(t_game *game)
 	free(game);
 }
 
-/* function to free graphics
-use mlbx: mlx_destroy_image() */
+/* function to free graphics */
 void	free_graphics(t_game *game)
 {
 	if (game->image)
@@ -57,32 +73,19 @@ void	free_graphics(t_game *game)
 	}
 }
 
-void	close_window(t_game *game)
+int	close_game(t_game *game, const char *err_msg)
 {
-	free_graphics(game);
-	if (game->mlx && game->window)
-		mlx_destroy_window(game->mlx, game->window);
-	if (game->mlx)
+	if (err_msg)
 	{
-		mlx_destroy_window(game->mlx, game->window); /* destroy display on linux*/
-		free(game->mlx);
+		ft_printf ("Error:\n %s\n", err_msg);
+		return (0);
 	}
-	if (game->map)
-		/* free_map (game->map) */
-		free_map(game);
-}
-
-int	close_game(t_game *game, const char *ft_errormsg)
-{
-	if (ft_errormsg)
-		ft_printf("%s\n", ft_errormsg);
 	if (game)
 	{
 		if (game->image)
 			free_graphics(game);
-		/* function doesn't work on macos
 		if (game->mlx)
-			mlx_loop_end(game->mlx); */
+			mlx_loop_end(game->mlx);
 		if (game->mlx && game->window)
 		{
 			mlx_destroy_window(game->mlx, game->window);
@@ -90,13 +93,12 @@ int	close_game(t_game *game, const char *ft_errormsg)
 		}
 		if (game->mlx)
 		{
-			/* function doesn't exist on macos */
-			/* mlx_destroy_display(game->mlx); */
+			mlx_destroy_display(game->mlx);
 			free (game->mlx);
 			game->mlx = NULL;
 		}
-		free_map (game);
+		free_map(game);
 	}
-	exit(EXIT_SUCCESS);
-	return(0);
+	exit (EXIT_SUCCESS);
+	return (0);
 }

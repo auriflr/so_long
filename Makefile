@@ -1,29 +1,24 @@
 NAME = so_long
-
-CFLAGS = -Wall -Wextra -Werror
-LDFLAGS = -framework OpenGL -framework AppKit
-
-MINILIBX_PATH = ./mlx2
+CFLAGS = -Wall -Wextra -Werror -I/usr/include -I$(LIBFT_PATH)
+MLXFLAGS = -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
+MINILIBX_PATH = ./mlx
 MINILIBX = $(MINILIBX_PATH)/libmlx.a
-
 LIBFT_PATH = ./libft
 LIBFT = $(LIBFT_PATH)/libft.a
-
-SRC = src/main.c src/mcheck.c src/flood_fill.c src/close.c\
-	src/create.c src/player.c src/graphics.c src/mread.c\
-
+SRC = src/main.c src/mcheck.c src/flood_fill.c src/close.c \
+      src/create.c src/upnmove.c src/graphics.c src/mread.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
-	gcc $(OBJ) $(LDFLAGS) $(LIBFT) $(MINILIBX) -o $(NAME)
+$(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
+	gcc $(OBJ) $(LIBFT) $(MINILIBX) -lXext -lX11 -lm -o $(NAME)
 	@echo "\033[0;32mso_long compiled OK! Hope you're ready to play!"
 
 %.o: %.c
-	gcc $(CFLAGS) -I/usr/include -I$(LIBFT_PATH) -O3 -c $< -o $@
+	gcc $(CFLAGS) -c $< -o $@
 
-clean: 
+clean:
 	rm -f $(OBJ)
 	make -C $(MINILIBX_PATH) clean
 	make -C $(LIBFT_PATH) clean
@@ -31,7 +26,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 	make -C $(MINILIBX_PATH) clean
-	make -C $(LIBFT_PATH) clean
+	make -C $(LIBFT_PATH) fclean
 
 re: fclean all
 

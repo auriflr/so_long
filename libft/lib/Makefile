@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar rcs
 
-SRC_DIRS := ft_fd ft_is ft_lst ft_mem ft_pri ft_str
+SRC_DIRS := ft_fd ft_is ft_lst ft_mem ft_pri ft_str gnl
 SRCS := $(foreach dir, $(SRC_DIRS), $(wildcard $(dir)/*.c))
 
 OBJS := $(SRCS:.c=.o)

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:20:53 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/17 10:54:55 by babyf            ###   ########.fr       */
+/*   Updated: 2025/10/30 13:34:05 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
+/* check again */
 void	free_matrix(char **matrix)
 {
 	int	i;
@@ -66,7 +66,7 @@ void	fill(char **matrix, int x, int y, t_game *game)
 	fill (matrix, x, y - 1, game);
 }
 
-/* to rewrite */
+/* check again */
 void	flood_fill(t_game *game)
 {
 	char	**matrix;
