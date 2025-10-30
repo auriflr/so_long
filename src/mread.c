@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 09:22:41 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/30 13:35:16 by afloris          ###   ########.fr       */
+/*   Updated: 2025/10/30 14:55:04 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,14 @@ int	map_size(t_game *game)
 int	create_matrix(t_game *game)
 {
 	game->map = (char **)malloc((game->rows + 1) * sizeof(char *));
+	ft_printf("Malloc created.\n");
 	if (!game->map)
 	{
+		ft_printf("Malloc failed.\n");
 		game->map = NULL;
 		return (-1);
 	}
+	ft_printf("Ignoring Malloc check.\n");
 	return (0);
 }
 
@@ -91,11 +94,11 @@ void	read_map(t_game *game)
 {
 	ft_printf("Analyzing map input...hold steady...\n");
 	if (map_size(game) < 0)
-		close_game(game, "Error:\nMap not found.\n");
+		close_game(game, "Map not found.\n");
 	else if (!create_matrix(game))
-		close_game(game, "Error:\n Malloc in matrix failed.\n");
+		close_game(game, "Malloc in matrix failed.\n");
 	else if (fill_map(game) == NULL)
-		close_game(game, "Error:\nError in map reading.\n");
+		close_game(game, "Error in map reading.\n");
 	else
 		ft_printf("Reading map...\nDone.\n");
 }

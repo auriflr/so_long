@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:06:29 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/30 13:34:37 by afloris          ###   ########.fr       */
+/*   Updated: 2025/10/30 14:47:59 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void    render_map(t_game *game, int i)
 
     x = 0;
     if (i == 0)
-        set_image(game);
+        set_graphics(game);
     while (game->map[x])
     {
         y = 0;
