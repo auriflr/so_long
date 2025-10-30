@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/30 14:25:25 by afloris          ###   ########.fr       */
+/*   Updated: 2025/10/30 15:13:03 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	element_parsing(t_game *game)
 	}
 }
 
+/* this one leaks */
 void	check_map(t_game *game)
 {
 	is_enclosed(game);

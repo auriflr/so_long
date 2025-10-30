@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/30 14:24:04 by afloris          ###   ########.fr       */
+/*   Updated: 2025/10/30 15:09:17 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,5 @@ int		main(int ac, char **av)
 	}
 	return (ft_printf("Hi, user. You need a map to play the game!"), 1);
 }
+
+/* valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long map1.ber */

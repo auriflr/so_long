@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 09:22:41 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/30 14:55:04 by afloris          ###   ########.fr       */
+/*   Updated: 2025/10/30 14:57:54 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	map_size(t_game *game)
 	close (fd);
 	return (game->rows);
 }
-
+/* error here */
 int	create_matrix(t_game *game)
 {
 	game->map = (char **)malloc((game->rows + 1) * sizeof(char *));
