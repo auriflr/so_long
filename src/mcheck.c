@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/03 18:17:54 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/03 18:37:20 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,13 @@ void	is_rectangular(t_game *game)
 }
 
 /* checks that all the outside corners of the map are walls */
-void	is_enclosed(t_game *game)
+void	is_enclosed(char **map)
 {
-	/* not solved */
+	int	i;
+	int j;
+	
+	i = 0;
+	
 }
 
 /* checks only the rows. */
