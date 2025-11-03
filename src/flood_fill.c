@@ -6,12 +6,12 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:20:53 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/03 18:18:03 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/03 18:46:13 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-/* check again */
+/* check rows/colums relationship */
 void	free_matrix(char **matrix)
 {
 	int	i;

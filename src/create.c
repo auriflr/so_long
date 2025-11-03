@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/03 18:18:04 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/03 18:44:46 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,6 @@ t_game	*init_game(void)
 		return (NULL);
 	return (game);
 }
-
-/* create map */
-// t_game	*create_map(t_game *game)
-// {
-// 	game = (t_game *)malloc(sizeof(t_game));
-// 	if (!game)
-// 		return (NULL);
-// 	return (game);
-// }
 
 /* initialize graphics with calloc */
 t_graphics	*init_graphics(void)
