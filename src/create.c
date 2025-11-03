@@ -6,39 +6,38 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/30 13:33:55 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/03 15:48:38 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 /* OK */
 /* initialize map (with calloc, so it's set to 0) */
-t_game	*init_map(void)
+t_game	*init_game(void)
 {
 	t_game	*game;
 	
-	game = (t_game *)calloc(1, sizeof(t_game));
+	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
 		return (NULL);
 	return (game);
 }
 
 /* create map */
-t_game	*create_map(t_game *game)
-{
-	game = (t_game *)malloc(sizeof(t_game));
-	if (!game)
-		return (NULL);
-	game = init_map();
-	return (game);
-}
+// t_game	*create_map(t_game *game)
+// {
+// 	game = (t_game *)malloc(sizeof(t_game));
+// 	if (!game)
+// 		return (NULL);
+// 	return (game);
+// }
 
 /* initialize graphics with calloc */
 t_graphics	*init_graphics(void)
 {
 	t_graphics	*graphics;
 
-	graphics = (t_graphics *)calloc(1, sizeof(t_graphics));
+	graphics = (t_graphics *)ft_calloc(1, sizeof(t_graphics));
 	if (!graphics)
 		return (NULL);
 	return (graphics);

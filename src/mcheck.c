@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/30 15:13:03 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/03 18:13:07 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,12 @@ void	is_rectangular(t_game *game)
 }
 
 /* checks that all the outside corners of the map are walls */
-void		is_enclosed(t_game *game)
+void	is_enclosed(t_game *game)
 {
-	int	i;
-	int	j;
-	
-	i = 0;
-	while (i < game->rows)
-	{
-		j = 0;
-		while (j < game->cols)
-		{
-			if (i == 0 || i == (game->rows - 1))
-				if (game->map[i][j] != '1')
-					ft_errormsg(game, "Map rows borders are not walls.");
-			if (j == 0 || j == (game->cols - 1))
-				if (game->map[i][j] != '1')
-					ft_errormsg(game, "Map collons borders are not walls");
-			j++;
-		}
-		i++;
-	}
+	/* not solved */
 }
-/* checks only the rows. Verify redundancy. */
+
+/* checks only the rows. */
 void	check_rows(t_game *game)
 {
 	int	i;
@@ -60,12 +43,12 @@ void	check_rows(t_game *game)
 	while (i < game->cols)
 	{
 		if (game->map[game->rows - 1][i] != '1')
-			ft_errormsg(game, "Invalid map.");
+			ft_errormsg(game, "Invalid map.");	
 		i++;
 	}
 	if (game->map[game->rows - 1][i] != '\0' && \
 		game->map[game->rows - 1][i] != '\n')
-		ft_errormsg(game, "Invalid map.");
+			ft_errormsg(game, "Invalid map.");
 }
 
 /* element parsing */

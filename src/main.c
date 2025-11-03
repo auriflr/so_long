@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/30 15:09:17 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:04:13 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,14 @@ int		main(int ac, char **av)
 
 	if (ac == 2)
 	{
-		game = init_map();
 		if (!ft_strnstr(av[1] + ft_strlen(av[1]) - 4, ".ber", 4))
-			ft_errormsg(game, "Map must be a .ber file.");
-		game = create_map(game);
+			ft_errormsg(NULL, "Map must be a .ber file.");
+		game = init_game();
 		if (!game)
 			return(ft_printf("Map wasn't created.\n"), 0);
-		game->file = ft_strjoin("maps/", av[1]);
-		if (!game->file)
-			close_game(game, "Filename not found\n");
+		game->file = av[1];
+		// if (!game->file)
+		// 	close_game(game, "Filename not found\n");
 		read_map(game);
 		check_map(game);
 		create_struct(game);

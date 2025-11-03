@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/30 14:24:45 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/03 17:46:42 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct	s_graphics
 
 /* map parsing / error handling */
 void	ft_errormsg(t_game *game, const char *msg);
+
 void	is_enclosed(t_game *game);
 void	check_rows(t_game *game);
 void	is_rectangular(t_game *game);
@@ -103,8 +104,8 @@ char	**fill_map(t_game *game);
 /* initialize / create */
 void		create_loop(t_game *game);
 void		open_window(t_game *game);
-t_game		*init_map(void);
-t_game		*create_map(t_game *game);
+t_game		*init_game(void);
+// t_game		*create_map(t_game *game);
 t_game		*create_struct(t_game *game);
 t_graphics	*init_graphics(void);
 t_graphics	*create_graph(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 09:22:41 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/30 14:57:54 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:37:41 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,30 +36,33 @@ int	map_size(t_game *game)
 	line = get_next_line(fd);
 	while (line)
 	{
-		len = 0;
-		while (line[len] && line[len] != '\n')
-			len++;
+		ft_printf("In here.\n");
+		len = ft_strlen(line);
+		if (len == 0)
+			return (close_game(game, "Map line lenght is 0.\n"), -1);
 		if (game->cols == 0)
 			game->cols = len;
 		game->rows++;
 		free(line);
 		line = get_next_line(fd);
 	}
+	ft_printf("COLS: %d\n", game->cols);
+	ft_printf("ROWS: %d\n", game->rows);
 	close (fd);
 	return (game->rows);
 }
+
 /* error here */
 int	create_matrix(t_game *game)
 {
 	game->map = (char **)malloc((game->rows + 1) * sizeof(char *));
-	ft_printf("Malloc created.\n");
+	ft_printf("Matrix created.\n");
 	if (!game->map)
 	{
-		ft_printf("Malloc failed.\n");
+		ft_printf("Matrix failed.\n");
 		game->map = NULL;
 		return (-1);
 	}
-	ft_printf("Ignoring Malloc check.\n");
 	return (0);
 }
 
@@ -85,9 +88,21 @@ char	**fill_map(t_game *game)
 		line = get_next_line (fd);
 	}
 	game->map[i] = NULL;
-	i = 0;
 	close (fd);
+	free (line);
 	return (game->map);
+}
+
+static void	print_map(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		ft_printf("%s\n", map[i]);
+		i++;
+	}
 }
 
 void	read_map(t_game *game)
@@ -95,10 +110,10 @@ void	read_map(t_game *game)
 	ft_printf("Analyzing map input...hold steady...\n");
 	if (map_size(game) < 0)
 		close_game(game, "Map not found.\n");
-	else if (!create_matrix(game))
+	if (create_matrix(game) < 0)
 		close_game(game, "Malloc in matrix failed.\n");
-	else if (fill_map(game) == NULL)
+	if (fill_map(game) == NULL)
 		close_game(game, "Error in map reading.\n");
-	else
-		ft_printf("Reading map...\nDone.\n");
+	print_map(game->map);
+	ft_printf("Reading map...\nDone.\n");
 }

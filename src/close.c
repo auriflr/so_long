@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:47:02 by babyf             #+#    #+#             */
-/*   Updated: 2025/10/30 14:22:15 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/03 16:20:56 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	free_map(t_game *game)
 		free (game->map);
 		game->map = NULL;
 	}
-	if (game->file)
-			free(game->file);
 	if (game->image)
 		free(game->image);
 	free(game);
@@ -76,10 +74,7 @@ void	free_graphics(t_game *game)
 int	close_game(t_game *game, const char *err_msg)
 {
 	if (err_msg)
-	{
 		ft_printf ("Error:\n %s\n", err_msg);
-		return (0);
-	}
 	if (game)
 	{
 		if (game->image)
@@ -99,6 +94,6 @@ int	close_game(t_game *game, const char *err_msg)
 		}
 		free_map(game);
 	}
-	exit (EXIT_SUCCESS);
+	exit (EXIT_FAILURE);
 	return (0);
 }
