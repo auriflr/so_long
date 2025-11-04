@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:06:29 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/04 20:18:13 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/04 20:22:15 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void    set_graphics(t_game *game)
     game->image->collect = mlx_xpm_file_to_image(game->mlx, "graphics/collect.xpm", &img_size, &img_size);
     if (!game->image->collect)
         ft_errormsg(game, "Collect image was not properly loaded");
-    game->image->wall = mlx_xpm_file_to_image(game->mlx, "graphics/wall.xpm", &img_size, &img_size);
+    game->image->wall = mlx_xpm_file_to_image(game->mlx, "graphics/walls.xpm", &img_size, &img_size);
     if (!game->image->wall)
         ft_errormsg(game, "Wall image was not loaded properly.\n");
 }
@@ -50,6 +50,7 @@ void    render_map(t_game *game, int i)
     /* non entra qua */
     if (i == 0)
         set_graphics(game);
+    ft_printf("ciao.\n");
     while (game->map[x])
     {
         y = 0;
@@ -65,6 +66,10 @@ void    render_map(t_game *game, int i)
                 put_image(game, game->image->collect, x, y);
             if (game->map[x][y] == 'P')
                 put_image(game, game->image->player, x, y);
+            y++;
         }
+        x++;
     }
 }
+
+/* non chiude con X o con ESC */

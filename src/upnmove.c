@@ -6,12 +6,12 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:00:24 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/03 18:18:10 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/04 20:23:30 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
+/* CHECK AGAIN: error here */
 void    update_player_graphics(int keysym, t_game *game)
 {
     if (game->image->player)
