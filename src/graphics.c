@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:06:29 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/03 18:18:02 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/04 20:18:13 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void    put_image(t_game *game, void *image, int x, int y)
     if (!image)
         close_game(game, "Image loading went wrong.\n");
     mlx_put_image_to_window(game->mlx, game->window, image, (x * TILESIZE), (y * TILESIZE));
-    /*check that image exists, if not exit the game
-    use mlx_put_image_to_window*/
 }
 
 void    render_map(t_game *game, int i)
@@ -49,6 +47,7 @@ void    render_map(t_game *game, int i)
     int y;
 
     x = 0;
+    /* non entra qua */
     if (i == 0)
         set_graphics(game);
     while (game->map[x])

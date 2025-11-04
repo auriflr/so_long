@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/04 20:07:58 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/04 20:13:28 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ void	element_parsing(t_game *game)
 	i = 0;
 	while (i < game->rows)
 	{
-		j = -1;
-		while (++j < game->cols)
+		j = 0;
+		while (j < game->cols)
 		{
 			if (game->map[i][j] == 'P')
 			{
@@ -99,9 +99,10 @@ void	element_parsing(t_game *game)
 				game->exit++;
 			else if (game->map[i][j] != '1' && game->map[i][j] != '0')
 				ft_errormsg(game, "Invalid element.");
+			j++;	
 		}
+		i++;
 	}
-	i++;
 }
 
 /* this one leaks */
