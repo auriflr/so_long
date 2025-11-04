@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/03 18:46:22 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/04 20:07:58 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,42 @@ void	is_rectangular(t_game *game)
 	i = 0;
 	while (i < game->rows - 1)
 	{
-		if ((int) ft_strlen(game->map[i]) - 1 != game->cols)
+		if ((int) ft_strlen(game->map[i]) != game->cols)
 			ft_errormsg(game, "Map is not rectangular.");
 		i++;
 	}
-	if (game->cols == game->rows)
-		ft_errormsg(game, "Map is a square.");
+	// if (game->cols == game->rows)
+	// 	ft_errormsg(game, "Map is a square.");
 }
 
 /* checks that all the outside corners of the map are walls 
-TO REWRITE s*/
-void	is_enclosed(char **map)
+TO REWRITE */
+void	is_enclosed(t_game *game)
 {
 	int	i;
-	int j;
 	
 	i = 0;
+	while (i < game->rows)
+	{
+		ft_printf("Rows: %d\n", i);
+		if (game->map[i][0] != '1' || game->map[i][game->cols - 1] != '1')
+		{
+			ft_printf("Problem is here, i : %d\n", i);
+			ft_errormsg(game, "Rows borders are not walls.\n");
+		}
+		i++;
+	}
+	i = 0;
+	while (i < game->cols)
+	{
+		if (game->map[0][i] != '1' || game->map[game->rows -1][i] != '1')
+		{
+			ft_printf("Problem is here, i : %d\n", i);
+			ft_errormsg(game, "Columns borders are not walls.\n");
+		}
+		i++;
+	}
+	
 }
 
 /* checks only the rows. */
@@ -81,6 +101,7 @@ void	element_parsing(t_game *game)
 				ft_errormsg(game, "Invalid element.");
 		}
 	}
+	i++;
 }
 
 /* this one leaks */

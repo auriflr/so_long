@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 09:22:41 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/03 18:17:52 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/04 19:59:05 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	map_size(t_game *game)
 		if (len == 0)
 			return (close_game(game, "Map line lenght is 0.\n"), -1);
 		if (game->cols == 0)
-			game->cols = len;
+			game->cols = len - 1;
 		game->rows++;
 		free(line);
 		line = get_next_line(fd);
