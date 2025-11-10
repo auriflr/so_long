@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:00:24 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 13:15:07 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:43:54 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,23 @@ void    update_player_graphics(int keysym, t_game *game)
         mlx_destroy_image(game->mlx, game->image->player);
     if (keysym == UP)
         game->image->player = mlx_xpm_file_to_image(game->mlx,
-        "graphics/player1.xpm", &game->tilesize, &game->tilesize);
+        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
     if (keysym == DOWN)
         game->image->player = mlx_xpm_file_to_image(game->mlx, 
-        "graphics/player1.xpm", &game->tilesize, &game->tilesize);
+        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
     if (keysym == RIGHT)
     {
         game->image->player = mlx_xpm_file_to_image(game->mlx,
-        "graphics/player3.xpm", &game->tilesize, &game->tilesize);
+        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
         game->image->player = mlx_xpm_file_to_image(game->mlx,
-        "graphics/player0.xpm", &game->tilesize, &game->tilesize);
+        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
     }
     if (keysym == LEFT) /* not so sure, maybe turn the image */
     {
         game->image->player = mlx_xpm_file_to_image(game->mlx,
-        "graphics/player3.xpm", &game->tilesize, &game->tilesize);
+        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
         game->image->player = mlx_xpm_file_to_image(game->mlx,
-        "graphics/player0.xpm", &game->tilesize, &game->tilesize);
+        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
     }
 }
 

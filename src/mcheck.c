@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/04 20:13:28 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:45:34 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,8 @@ void	element_parsing(t_game *game)
 			if (game->map[i][j] == 'P')
 			{
 				game->player++;
-				game->p_x = i;
-				game->p_y = j;
+				game->p_x = j;
+				game->p_y = i;
 			}
 			else if (game->map[i][j] == 'C')
 				game->collect++;

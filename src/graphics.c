@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:06:29 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 13:10:54 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:43:37 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,4 @@ void    render_map(t_game *game, int i)
     }
 }*/
 
-/* non chiude con X o con ESC */
+/* non chiude con X */
