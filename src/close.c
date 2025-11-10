@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:47:02 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 17:41:41 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 18:27:42 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ void	free_map(t_game *game)
 		free (game->map);
 		game->map = NULL;
 	}
-	if (game->image)
-		free(game->image);
-	free(game);
+	// if (game->image)
+	// 	free(game->image);
+	// free(game);
 }
 
 /* function to free graphics */
@@ -57,33 +57,44 @@ void	free_graphics(t_game *game)
 			mlx_destroy_image(game->mlx, game->image->wall);
 		if (game->image->exit)
 			mlx_destroy_image(game->mlx, game->image->exit);
-		if (game->image->map)
-			mlx_destroy_image(game->mlx, game->image->map);
+		if (game->image->floor)
+			mlx_destroy_image(game->mlx, game->image->floor);
 	}
+	free(game->image);
+	game->image = NULL;
 }
+
+// int	close_game(t_game *game, const char *err_msg)
+// {
+// 	if (err_msg)
+// 		ft_printf ("%s\n", err_msg);
+// 	if (game)
+// 	{
+// 		if (game->image)
+// 			free_graphics(game);
+// 		if (game->mlx)
+// 		{
+// 			mlx_loop_end(game->mlx);
+// 			if (game->window)
+// 			{
+// 				mlx_destroy_window(game->mlx, game->window);
+// 				game->window = NULL;
+// 			}
+// 			mlx_destroy_display(game->mlx);
+// 			free (game->mlx);
+// 			game->mlx = NULL;
+// 		}
+// 		free_map(game);
+// 	}
+// 	free(game);
+// 	exit (EXIT_FAILURE);
+// 	return (0);
+// }
 
 int	close_game(t_game *game, const char *err_msg)
 {
 	if (err_msg)
-		ft_printf ("%s\n", err_msg);
-	if (game)
-	{
-		if (game->image)
-			free_graphics(game);
-		if (game->mlx)
-		{
-			mlx_loop_end(game->mlx);
-			if (game->window)
-			{
-				mlx_destroy_window(game->mlx, game->window);
-				game->window = NULL;
-			}
-			mlx_destroy_display(game->mlx);
-			// free (game->mlx);
-			game->mlx = NULL;
-		}
-		// free_map(game);
-	}
-	exit (EXIT_FAILURE);
+		ft_printf("%s\n", err_msg);
+	destroy_all(game);
 	return (0);
 }

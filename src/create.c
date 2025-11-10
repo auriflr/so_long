@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/03 18:44:46 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 18:25:26 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,21 @@ t_graphics	*init_graphics(void)
 }
 
 /* create graphics */
-t_graphics	*create_graph(t_game *game)
-{
-	game->image = (t_graphics *)malloc(sizeof(t_graphics));
-	if (!game)
-		return (NULL);
-	game->image = init_graphics();
-	return (game->image);
-}
+// t_graphics	*create_graph(t_game *game)
+// {
+// 	game->image = (t_graphics *)malloc(sizeof(t_graphics));
+// 	if (!game->image)
+// 		return (NULL);
+// 	game->image = init_graphics();
+// 	return (game->image);
+// }
 
  /* create struct */
 t_game	*create_struct(t_game *game)
 {
 	if (!game)
-		close_game(game, "Error:\n Map struct is NULL.\n");
-	game->image = create_graph(game);
+		close_game(game, "Error:\n Map struct is NULL\n");
+	game->image = init_graphics();
 	if (!game->image)
 		close_game (game, "Error:\n Graphics pointer is NULL.\n");
 	return (game);

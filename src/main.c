@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 17:44:48 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 18:17:32 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,21 @@ int	key_manager(int keysym, t_game *game)
 void	create_loop(t_game *game)
 {
 	mlx_hook(game->window, KeyPress, KeyPressMask, key_manager, game);
+	mlx_hook(game->window, DestroyNotify, StructureNotifyMask, destroy_all, game);
 	mlx_loop(game->mlx);
 }
 
+int	destroy_all(t_game *game)
+{
+	free_graphics(game);
+	// mlx_destroy_image(game->mlx, game->image);
+	mlx_destroy_window(game->mlx, game->window);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	free_map(game);
+	free(game);
+	exit(EXIT_SUCCESS);
+}
 
 int		main(int ac, char **av)
 {
@@ -54,15 +66,10 @@ int		main(int ac, char **av)
 			return(ft_printf("Map wasn't created.\n"), 0);
 		game->file = av[1];
 		read_map(game);
-		ft_printf("parsing OK\n");
 		check_map(game);
-		ft_printf("map OK\n");
 		create_struct(game);
-		ft_printf("struct OK\n");
 		open_window(game);
-		ft_printf("window OK\n");
 		render_map(game, 0);
-		ft_printf("render OK\n");
 		create_loop(game);
 		return (0);
 	}

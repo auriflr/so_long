@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 17:39:39 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 18:28:28 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ typedef struct	s_graphics
 	void	*floor;
 	void	*wall;
 	void	*exit;
-	void	*map;
+	// void	*map;
 }				t_graphics;
 
 /* fix files and function library */
@@ -122,6 +122,7 @@ int		key_manager(int keysym, t_game *game);
 int		close_game(t_game *game, const char *err_msg);
 void	free_map(t_game *game);
 void	free_graphics(t_game *game);
+int		destroy_all(t_game *game);
 
 
 #endif
