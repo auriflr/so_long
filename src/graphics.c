@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:06:29 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/04 20:22:15 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:10:54 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void    put_image(t_game *game, void *image, int x, int y)
 {
     if (!image)
         close_game(game, "Image loading went wrong.\n");
-    mlx_put_image_to_window(game->mlx, game->window, image, (x * TILESIZE), (y * TILESIZE));
+    mlx_put_image_to_window(game->mlx, game->window, image, (y * TILESIZE), (x * TILESIZE));
 }
 
 void    render_map(t_game *game, int i)
@@ -46,11 +46,38 @@ void    render_map(t_game *game, int i)
     int x;
     int y;
 
-    x = 0;
-    /* non entra qua */
+    y = 0;
     if (i == 0)
         set_graphics(game);
-    ft_printf("ciao.\n");
+    while (game->map[y])
+    {
+        x = 0;
+        while (game->map[y][x])
+        {
+            if (game->map[y][x] == '1')
+                put_image(game, game->image->wall, x, y);
+            if (game->map [y][x] == '0')
+                put_image(game, game->image->floor, x, y);
+            if (game->map [y][x] == 'C')
+                put_image (game, game->image->collect, x, y);
+            if (game->map [y][x] == 'E')
+                put_image(game, game->image->exit, x, y);
+            if (game->map[y][x] == 'P')
+                put_image(game, game->image->player, x, y);
+            x++;
+        }
+        y++;
+    }
+}
+
+/*void    render_map(t_game *game, int i)
+{
+    int x;
+    int y;
+
+    x = 0;
+    if (i == 0)
+        set_graphics(game);
     while (game->map[x])
     {
         y = 0;
@@ -63,13 +90,13 @@ void    render_map(t_game *game, int i)
             if (game->map [x][y] == 'C')
                 put_image (game, game->image->collect, x, y);
             if (game->map [x][y] == 'E')
-                put_image(game, game->image->collect, x, y);
+                put_image(game, game->image->exit, x, y);
             if (game->map[x][y] == 'P')
                 put_image(game, game->image->player, x, y);
             y++;
         }
         x++;
     }
-}
+}*/
 
 /* non chiude con X o con ESC */
