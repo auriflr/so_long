@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 14:22:55 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 17:44:48 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,18 @@ void	open_window(t_game *game)
 		close_game(game, "Error:\nWindow not created.\n");
 }
 
+int	key_manager(int keysym, t_game *game)
+{
+	if (keysym == XK_Escape)
+		close_game(game, "Quit by user\n");
+	else
+		move_player(keysym, game);
+	return (0);
+}
+
 void	create_loop(t_game *game)
 {
-	mlx_hook(game->window, KeyPress, KeyPressMask, key_down, game);
-	ft_printf("create_loop called\n");
-	mlx_hook(game->mlx, 17, 0L, close_game, game);
-	ft_printf("create_loop1 called\n");
+	mlx_hook(game->window, KeyPress, KeyPressMask, key_manager, game);
 	mlx_loop(game->mlx);
 }
 

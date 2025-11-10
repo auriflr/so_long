@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:06:29 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 13:53:18 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 16:27:21 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void    put_image(t_game *game, void *image, int x, int y)
 {
     if (!image)
         close_game(game, "Image loading went wrong.\n");
-    mlx_put_image_to_window(game->mlx, game->window, image, (y * TILESIZE), (x * TILESIZE));
+    mlx_put_image_to_window(game->mlx, game->window, image, (x * TILESIZE), (y * TILESIZE));
 }
 
 void    render_map(t_game *game, int i)
@@ -46,27 +46,27 @@ void    render_map(t_game *game, int i)
     int x;
     int y;
 
-    y = 0;
+    x = 0;
     if (i == 0)
         set_graphics(game);
-    while (game->map[y])
+    while (game->map[x])
     {
-        x = 0;
-        while (game->map[y][x])
+        y = 0;
+        while (game->map[x][y])
         {
-            if (game->map[y][x] == '1')
+            if (game->map[x][y] == '1')
                 put_image(game, game->image->wall, x, y);
-            if (game->map [y][x] == '0')
+            if (game->map[x][y] == '0')
                 put_image(game, game->image->floor, x, y);
-            if (game->map [y][x] == 'C')
+            if (game->map[x][y] == 'C')
                 put_image (game, game->image->collect, x, y);
-            if (game->map [y][x] == 'E')
+            if (game->map[x][y] == 'E')
                 put_image(game, game->image->exit, x, y);
-            if (game->map[y][x] == 'P')
+            if (game->map[x][y]== 'P')
                 put_image(game, game->image->player, x, y);
-            x++;
+            y++;
         }
-        y++;
+        x++;
     }
 }
 

@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 13:57:55 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 16:34:38 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	check_map(t_game *game)
 	element_parsing(game);
 	if (game->exit != 1 || game->collect < 1 || game->player != 1)
 	{
-		free_map (game);
+		// free_map (game);
 		ft_errormsg(game, "Too many players or exit, or too few collectibles.");
 	}
 }

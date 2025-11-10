@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:00:24 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 14:19:33 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 17:43:19 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void    update_position(int keysym, t_game *game, int *new_x, int *new_y)
     if (keysym == RIGHT && (*new_x + 1) != '1')
         *new_y += 1;
     //update_player_graphics(keysym, game);
-}
+} 
 
 void move_player(int keysym, t_game *game)
 {
@@ -63,7 +63,7 @@ void move_player(int keysym, t_game *game)
         return ;
     update_position(keysym, game, &new_x, &new_y);
     if (game->map[new_y][new_x] == 'E' && game->score == game->collect)
-        close_game(game, "WIN! ⭑.ᐟ\n");
+        close_game(game, "WIN! ⭑.ᐟ                      \n");
     if (game->map[new_y][new_x] == 'A')
         close_game(game, "LOSS ( ╥ ﹏ ╥)\n");
     else if (game->map[new_y][new_x] == 'E' && game->score != game->collect)
@@ -75,7 +75,7 @@ void move_player(int keysym, t_game *game)
             game->score++;
         game->map[new_y][new_x] = 'P';
         game->moves++;
-        ft_printf("YOUR MOVES: %d ദ്ദി (ᵔ ᗜ ᵔ)\n", game->moves);
+        ft_printf("YOUR MOVES: %d ദ്ദി (ᵔ ᗜ ᵔ)\r", game->moves);
         game->p_x = new_x;
         game->p_y = new_y;
         render_map(game, 1);
