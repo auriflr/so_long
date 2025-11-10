@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 12:26:20 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 14:22:55 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ void	open_window(t_game *game)
 void	create_loop(t_game *game)
 {
 	mlx_hook(game->window, KeyPress, KeyPressMask, key_down, game);
+	ft_printf("create_loop called\n");
 	mlx_hook(game->mlx, 17, 0L, close_game, game);
+	ft_printf("create_loop1 called\n");
 	mlx_loop(game->mlx);
 }
 
@@ -45,13 +47,16 @@ int		main(int ac, char **av)
 		if (!game)
 			return(ft_printf("Map wasn't created.\n"), 0);
 		game->file = av[1];
-		// if (!game->file)
-		// 	close_game(game, "Filename not found\n");
 		read_map(game);
+		ft_printf("parsing OK\n");
 		check_map(game);
+		ft_printf("map OK\n");
 		create_struct(game);
+		ft_printf("struct OK\n");
 		open_window(game);
+		ft_printf("window OK\n");
 		render_map(game, 0);
+		ft_printf("render OK\n");
 		create_loop(game);
 		return (0);
 	}

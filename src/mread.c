@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 09:22:41 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/04 19:59:05 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 15:13:23 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	map_size(t_game *game)
 	line = get_next_line(fd);
 	while (line)
 	{
-		ft_printf("In here.\n");
 		len = ft_strlen(line);
 		if (len == 0)
 			return (close_game(game, "Map line lenght is 0.\n"), -1);
@@ -46,8 +45,8 @@ int	map_size(t_game *game)
 		free(line);
 		line = get_next_line(fd);
 	}
-	ft_printf("COLS: %d\n", game->cols);
-	ft_printf("ROWS: %d\n", game->rows);
+	// ft_printf("COLS: %d\n", game->cols);
+	// ft_printf("ROWS: %d\n", game->rows);
 	close (fd);
 	return (game->rows);
 }

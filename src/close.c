@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:47:02 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/03 18:18:07 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 14:02:26 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_errormsg(t_game *game, const char *msg)
 
 int	key_down(int keysym, t_game *game)
 {
+	ft_printf("called keydown\n");
 	if (keysym == XK_Escape)
 		close_game(game, "Quit by user.\n");
 	else

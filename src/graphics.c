@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:06:29 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 13:43:37 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:53:18 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,33 +70,4 @@ void    render_map(t_game *game, int i)
     }
 }
 
-/*void    render_map(t_game *game, int i)
-{
-    int x;
-    int y;
-
-    x = 0;
-    if (i == 0)
-        set_graphics(game);
-    while (game->map[x])
-    {
-        y = 0;
-        while (game->map[x][y])
-        {
-            if (game->map[x][y] == '1')
-                put_image(game, game->image->wall, x, y);
-            if (game->map [x][y] == '0')
-                put_image(game, game->image->floor, x, y);
-            if (game->map [x][y] == 'C')
-                put_image (game, game->image->collect, x, y);
-            if (game->map [x][y] == 'E')
-                put_image(game, game->image->exit, x, y);
-            if (game->map[x][y] == 'P')
-                put_image(game, game->image->player, x, y);
-            y++;
-        }
-        x++;
-    }
-}*/
-
-/* non chiude con X */
+/* non esce con x */

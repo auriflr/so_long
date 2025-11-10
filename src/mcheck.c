@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 16:03:59 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 13:45:34 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/10 13:57:55 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	is_enclosed(t_game *game)
 	i = 0;
 	while (i < game->cols)
 	{
+		ft_printf("Cols: %d\n", i);
 		if (game->map[0][i] != '1' || game->map[game->rows -1][i] != '1')
 		{
 			ft_printf("Problem is here, i : %d\n", i);
@@ -55,7 +56,6 @@ void	is_enclosed(t_game *game)
 		}
 		i++;
 	}
-	
 }
 
 /* checks only the rows. */
