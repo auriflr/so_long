@@ -3,41 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   upnmove.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
+/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:00:24 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 17:43:19 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/12 18:08:17 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-/* CHECK AGAIN: error here 
-exit doesn't close the game immediately */
-/*void    update_player_graphics(int keysym, t_game *game)
-{
-    if (game->image->player)
-        mlx_destroy_image(game->mlx, game->image->player);
-    if (keysym == UP)
-        game->image->player = mlx_xpm_file_to_image(game->mlx,
-        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
-    if (keysym == DOWN)
-        game->image->player = mlx_xpm_file_to_image(game->mlx, 
-        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
-    if (keysym == RIGHT)
-    {
-        game->image->player = mlx_xpm_file_to_image(game->mlx,
-        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
-        game->image->player = mlx_xpm_file_to_image(game->mlx,
-        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
-    }
-    if (keysym == LEFT)
-    {
-        game->image->player = mlx_xpm_file_to_image(game->mlx,
-        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
-        game->image->player = mlx_xpm_file_to_image(game->mlx,
-        "graphics/player4.xpm", &game->tilesize, &game->tilesize);
-    }
-}*/
 
 void    update_position(int keysym, t_game *game, int *new_x, int *new_y)
 {
@@ -51,8 +24,26 @@ void    update_position(int keysym, t_game *game, int *new_x, int *new_y)
         *new_y -= 1;
     if (keysym == RIGHT && (*new_x + 1) != '1')
         *new_y += 1;
-    //update_player_graphics(keysym, game);
 } 
+void	open_window(t_game *game)
+{
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		free(game);
+	game->window = mlx_new_window(game->mlx, 
+					(TILESIZE * game->rows), 
+					(TILESIZE * game->cols), 
+					"so long");
+	if (!game->window)
+		close_game(game, "Error:\nWindow not created.\n");
+}
+
+void	create_loop(t_game *game)
+{
+	mlx_hook(game->window, KeyPress, KeyPressMask, key_manager, game);
+	mlx_hook(game->window, DestroyNotify, StructureNotifyMask, destroy_all, game);
+	mlx_loop(game->mlx);
+}
 
 void move_player(int keysym, t_game *game)
 {
@@ -63,7 +54,7 @@ void move_player(int keysym, t_game *game)
         return ;
     update_position(keysym, game, &new_x, &new_y);
     if (game->map[new_y][new_x] == 'E' && game->score == game->collect)
-        close_game(game, "WIN! ⭑.ᐟ                      \n");
+        close_game(game, "WIN! ⭑.ᐟ\n");
     if (game->map[new_y][new_x] == 'A')
         close_game(game, "LOSS ( ╥ ﹏ ╥)\n");
     else if (game->map[new_y][new_x] == 'E' && game->score != game->collect)
@@ -75,7 +66,7 @@ void move_player(int keysym, t_game *game)
             game->score++;
         game->map[new_y][new_x] = 'P';
         game->moves++;
-        ft_printf("YOUR MOVES: %d ദ്ദി (ᵔ ᗜ ᵔ)\r", game->moves);
+        ft_printf("YOUR MOVES: %d ദ്ദി (ᵔ ᗜ ᵔ)\n", game->moves);
         game->p_x = new_x;
         game->p_y = new_y;
         render_map(game, 1);

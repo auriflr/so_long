@@ -6,31 +6,11 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 18:00:42 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/12 18:04:44 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-/* forse invertire cols e rows */
-void	open_window(t_game *game)
-{
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		free(game);
-	game->window = mlx_new_window(game->mlx, 
-					(TILESIZE * game->rows), 
-					(TILESIZE * game->cols), 
-					"so long");
-	if (!game->window)
-		close_game(game, "Error:\nWindow not created.\n");
-}
-
-void	create_loop(t_game *game)
-{
-	mlx_hook(game->window, KeyPress, KeyPressMask, key_manager, game);
-	mlx_hook(game->window, DestroyNotify, StructureNotifyMask, destroy_all, game);
-	mlx_loop(game->mlx);
-}
 
 int		main(int ac, char **av)
 {

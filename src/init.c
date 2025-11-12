@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 17:56:29 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/12 18:05:30 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ t_game	*create_struct(t_game *game)
 {
 	if (!game)
 		close_game(game, "Error:\n Map struct is NULL\n");
-	game->image = init_graphics();
-	if (!game->image)
+	game->graphics = init_graphics();
+	if (!game->graphics)
 		close_game (game, "Error:\n Graphics pointer is NULL.\n");
 	return (game);
 }

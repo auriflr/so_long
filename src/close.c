@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:47:02 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 18:00:39 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/12 18:05:30 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,21 @@ void	free_map(t_game *game)
 
 void	free_graphics(t_game *game)
 {
-	if (game->image)
+	if (game->graphics)
 	{
-		if (game->image->player)
-			mlx_destroy_image(game->mlx, game->image->player);
-		if (game->image->collect)
-			mlx_destroy_image(game->mlx, game->image->collect);
-		if (game->image->wall)
-			mlx_destroy_image(game->mlx, game->image->wall);
-		if (game->image->exit)
-			mlx_destroy_image(game->mlx, game->image->exit);
-		if (game->image->floor)
-			mlx_destroy_image(game->mlx, game->image->floor);
+		if (game->graphics->player)
+			mlx_destroy_graphics(game->mlx, game->graphics->player);
+		if (game->graphics->collect)
+			mlx_destroy_graphics(game->mlx, game->graphics->collect);
+		if (game->graphics->wall)
+			mlx_destroy_graphics(game->mlx, game->graphics->wall);
+		if (game->graphics->exit)
+			mlx_destroy_graphics(game->mlx, game->graphics->exit);
+		if (game->graphics->floor)
+			mlx_destroy_graphics(game->mlx, game->graphics->floor);
 	}
-	free(game->image);
-	game->image = NULL;
+	free(game->graphics);
+	game->graphics = NULL;
 }
 
 int	key_manager(int keysym, t_game *game)
