@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 17:34:47 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/12 18:08:23 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ ESC to exit */
 
 typedef	struct	s_game
 {
-	struct s_graphics	*image;
+	struct s_graphics	*graphics;
 	char				**map;
 	char				*file;
 	void				*mlx;
@@ -92,43 +92,34 @@ void	remove_nl(char *line);
 void	read_map(t_game *game);
 char	**fill_map(t_game *game);
 
-/* map parsing / error handling */
-void	ft_errormsg(t_game *game, const char *msg);
-
-
-
-
-/* map handling  */
+/* flood fill: tile handling */
 int		check_matrix(char **matrix);
 void	free_matrix(char **matrix);
-
 void	fill(char **matrix, int x, int y, t_game *game);
 void	flood_fill(t_game *game);
 
-
-/* initialize / create */
-void		create_loop(t_game *game);
-void		open_window(t_game *game);
+/* initialize structs */
+void		ft_errormsg(t_game *game, const char *msg);
 t_game		*init_game(void);
-// t_game		*create_map(t_game *game);
 t_game		*create_struct(t_game *game);
 t_graphics	*init_graphics(void);
-t_graphics	*create_graph(t_game *game);
 
-/* graphics & moves */
-void    set_graphics(t_game *game);
-void    put_image(t_game *game, void *image, int x, int y);
-void    render_map(t_game *game, int i);
-void    update_player_graphics(int keysym, t_game *game);
-void    update_position(int keysym, t_game *game, int *new_x, int *new_y);
-void	move_player(int keysym, t_game *game);
-
-/* exit */
+/* close game */
 int		key_manager(int keysym, t_game *game);
 int		close_game(t_game *game, const char *err_msg);
 void	free_map(t_game *game);
 void	free_graphics(t_game *game);
 int		destroy_all(t_game *game);
 
+/* moves function + window/display handling */
+void    update_position(int keysym, t_game *game, int *new_x, int *new_y);
+void		create_loop(t_game *game);
+void		open_window(t_game *game);
+void	move_player(int keysym, t_game *game);
+
+/* map rendering and graphics */
+void    set_graphics(t_game *game);
+void    put_graphics(t_game *game, void *graphics, int x, int y);
+void    render_map(t_game *game, int i);
 
 #endif
