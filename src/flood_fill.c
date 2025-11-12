@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
+/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:20:53 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 13:55:23 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/12 17:49:16 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-/* check rows/colums relationship */
+
 void	free_matrix(char **matrix)
 {
 	int	i;
@@ -25,6 +25,8 @@ void	free_matrix(char **matrix)
 	}
 }
 
+/* checks if any exits or collectibles are still left
+in the matrix after flood fill (if yes, the path is invalid) */
 int	check_matrix(char **matrix)
 {
 	int	i;
@@ -47,7 +49,10 @@ int	check_matrix(char **matrix)
 	}
 	return (0);
 }
-
+/*a fill that starts from the player's position and marks 
+all the reachable tiles
+if an E tile is found, it marks it as F so the recursion stops there
+(or if a wall is met) */
 void	fill(char **matrix, int x, int y, t_game *game)
 {
 	if (x < 0 || y < 0 || x >= game->cols || y >=game->rows)
@@ -66,7 +71,6 @@ void	fill(char **matrix, int x, int y, t_game *game)
 	fill (matrix, x, y - 1, game);
 }
 
-/* check again */
 void	flood_fill(t_game *game)
 {
 	char	**matrix;
@@ -89,9 +93,6 @@ void	flood_fill(t_game *game)
 	matrix[i] = NULL;
 	fill(matrix, game->p_x, game->p_y, game);
 	if (check_matrix(matrix) < 0)
-	{
-		ft_printf("Path not valid\n");
 		close_game(game, "Error:\nPath not valid\n");
-	}
 	free_matrix(matrix);
 }
