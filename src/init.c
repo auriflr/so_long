@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create.c                                           :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
+/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 18:25:26 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/12 17:56:29 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-/* OK */
-/* initialize map (with calloc, so it's set to 0) */
+
+void	ft_errormsg(t_game *game, const char *msg)
+{
+	ft_printf("Error:\n %s\n", msg);
+	if (game->map)
+		free (game->map);
+}
+
 t_game	*init_game(void)
 {
 	t_game	*game;
@@ -23,7 +29,6 @@ t_game	*init_game(void)
 	return (game);
 }
 
-/* initialize graphics with calloc */
 t_graphics	*init_graphics(void)
 {
 	t_graphics	*graphics;
@@ -34,17 +39,6 @@ t_graphics	*init_graphics(void)
 	return (graphics);
 }
 
-/* create graphics */
-// t_graphics	*create_graph(t_game *game)
-// {
-// 	game->image = (t_graphics *)malloc(sizeof(t_graphics));
-// 	if (!game->image)
-// 		return (NULL);
-// 	game->image = init_graphics();
-// 	return (game->image);
-// }
-
- /* create struct */
 t_game	*create_struct(t_game *game)
 {
 	if (!game)
