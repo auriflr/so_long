@@ -6,7 +6,7 @@
 /*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 16:55:49 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/12 17:34:47 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,13 @@ void	is_closed(t_game *game);
 void	element_parsing(t_game *game);
 void	check_map(t_game *game);
 
+/* map handling (new line handling and filling the map)*/
+int		create_matrix(t_game *game);
+int		map_len(t_game *game);
+void	remove_nl(char *line);
+void	read_map(t_game *game);
+char	**fill_map(t_game *game);
+
 /* map parsing / error handling */
 void	ft_errormsg(t_game *game, const char *msg);
 
@@ -92,15 +99,12 @@ void	ft_errormsg(t_game *game, const char *msg);
 
 
 /* map handling  */
-int		create_matrix(t_game *game);
 int		check_matrix(char **matrix);
-int		map_size(t_game *game);
 void	free_matrix(char **matrix);
-void	read_map(t_game *game);
-void	remove_nl(char *line);
+
 void	fill(char **matrix, int x, int y, t_game *game);
 void	flood_fill(t_game *game);
-char	**fill_map(t_game *game);
+
 
 /* initialize / create */
 void		create_loop(t_game *game);
