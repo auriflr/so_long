@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
+/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 18:28:28 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/12 16:55:49 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,20 @@ typedef struct	s_graphics
 	void	*floor;
 	void	*wall;
 	void	*exit;
-	// void	*map;
 }				t_graphics;
 
-/* fix files and function library */
+/* parsing & error handling */
+void	is_rectangular(t_game *game);
+void	is_closed(t_game *game);
+/* void	check_rows(t_game *game); */ 
+void	element_parsing(t_game *game);
+void	check_map(t_game *game);
 
 /* map parsing / error handling */
 void	ft_errormsg(t_game *game, const char *msg);
-void	is_enclosed(t_game *game);
-void	check_rows(t_game *game);
-void	is_rectangular(t_game *game);
-void	element_parsing(t_game *game);
-void	check_map(t_game *game);
+
+
+
 
 /* map handling  */
 int		create_matrix(t_game *game);
