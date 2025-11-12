@@ -3,24 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
+/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:47:02 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 18:27:42 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/12 18:00:39 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-/* easy function for error messages */
-void	ft_errormsg(t_game *game, const char *msg)
-{
-	ft_printf("Error:\n %s\n", msg);
-	if (game->map)
-		free (game->map);
-}
-
-/* free map */
 void	free_map(t_game *game)
 {
 	int	i;
@@ -39,12 +30,8 @@ void	free_map(t_game *game)
 		free (game->map);
 		game->map = NULL;
 	}
-	// if (game->image)
-	// 	free(game->image);
-	// free(game);
 }
 
-/* function to free graphics */
 void	free_graphics(t_game *game)
 {
 	if (game->image)
@@ -64,32 +51,25 @@ void	free_graphics(t_game *game)
 	game->image = NULL;
 }
 
-// int	close_game(t_game *game, const char *err_msg)
-// {
-// 	if (err_msg)
-// 		ft_printf ("%s\n", err_msg);
-// 	if (game)
-// 	{
-// 		if (game->image)
-// 			free_graphics(game);
-// 		if (game->mlx)
-// 		{
-// 			mlx_loop_end(game->mlx);
-// 			if (game->window)
-// 			{
-// 				mlx_destroy_window(game->mlx, game->window);
-// 				game->window = NULL;
-// 			}
-// 			mlx_destroy_display(game->mlx);
-// 			free (game->mlx);
-// 			game->mlx = NULL;
-// 		}
-// 		free_map(game);
-// 	}
-// 	free(game);
-// 	exit (EXIT_FAILURE);
-// 	return (0);
-// }
+int	key_manager(int keysym, t_game *game)
+{
+	if (keysym == XK_Escape)
+		close_game(game, "Quit by user\n");
+	else
+		move_player(keysym, game);
+	return (0);
+}
+
+int	destroy_all(t_game *game)
+{
+	free_graphics(game);
+	mlx_destroy_window(game->mlx, game->window);
+	mlx_destroy_display(game->mlx);
+	free(game->mlx);
+	free_map(game);
+	free(game);
+	exit(EXIT_SUCCESS);
+}
 
 int	close_game(t_game *game, const char *err_msg)
 {

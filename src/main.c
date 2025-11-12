@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
+/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/10 18:17:32 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/12 18:00:42 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,11 @@ void	open_window(t_game *game)
 		close_game(game, "Error:\nWindow not created.\n");
 }
 
-int	key_manager(int keysym, t_game *game)
-{
-	if (keysym == XK_Escape)
-		close_game(game, "Quit by user\n");
-	else
-		move_player(keysym, game);
-	return (0);
-}
-
 void	create_loop(t_game *game)
 {
 	mlx_hook(game->window, KeyPress, KeyPressMask, key_manager, game);
 	mlx_hook(game->window, DestroyNotify, StructureNotifyMask, destroy_all, game);
 	mlx_loop(game->mlx);
-}
-
-int	destroy_all(t_game *game)
-{
-	free_graphics(game);
-	// mlx_destroy_image(game->mlx, game->image);
-	mlx_destroy_window(game->mlx, game->window);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
-	free_map(game);
-	free(game);
-	exit(EXIT_SUCCESS);
 }
 
 int		main(int ac, char **av)
