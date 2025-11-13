@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 17:02:53 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 14:08:26 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/13 14:11:46 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,70 +100,3 @@ void	read_map(t_game *game)
 		close_game(game, "Error in map reading.\n");
 	ft_printf("Reading map...\nDone.\n");
 }
-
-/* 
-==61877== Memcheck, a memory error detector
-==61877== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==61877== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==61877== Command: ./so_long maps/map4.ber
-==61877== 
-Analyzing map input...hold steady...
-==61877== Invalid read of size 1
-==61877==    at 0x110647: ft_strlen (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10F9B6: remove_nl (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FBCE: fill_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FCA1: read_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10E5C6: main (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==  Address 0x4c533c0 is 0 bytes inside a block of size 23 free'd
-==61877==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==61877==    by 0x10FBEC: fill_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FCA1: read_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10E5C6: main (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==  Block was alloc'd at
-==61877==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==61877==    by 0x110CE1: ft_strjoin (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x110ABD: ft_nl_buf (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x1108BC: get_next_line (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FBDC: fill_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FCA1: read_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10E5C6: main (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877== 
-==61877== Invalid read of size 1
-==61877==    at 0x10F9DF: remove_nl (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FBCE: fill_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FCA1: read_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10E5C6: main (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==  Address 0x4c533d5 is 21 bytes inside a block of size 23 free'd
-==61877==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==61877==    by 0x10FBEC: fill_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FCA1: read_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10E5C6: main (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==  Block was alloc'd at
-==61877==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==61877==    by 0x110CE1: ft_strjoin (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x110ABD: ft_nl_buf (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x1108BC: get_next_line (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FBDC: fill_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FCA1: read_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10E5C6: main (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877== 
-==61877== Invalid write of size 1
-==61877==    at 0x10F9CC: remove_nl (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FBCE: fill_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FCA1: read_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10E5C6: main (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==  Address 0x4c533d5 is 21 bytes inside a block of size 23 free'd
-==61877==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==61877==    by 0x10FBEC: fill_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FCA1: read_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10E5C6: main (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==  Block was alloc'd at
-==61877==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==61877==    by 0x110CE1: ft_strjoin (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x110ABD: ft_nl_buf (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x1108BC: get_next_line (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FBDC: fill_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10FCA1: read_map (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877==    by 0x10E5C6: main (in /nfs/homes/afloris/Desktop/so_long/so_long)
-==61877== 
-*/
