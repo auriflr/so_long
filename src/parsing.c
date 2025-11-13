@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:25:16 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 12:04:48 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/13 12:16:57 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,13 @@ void	is_closed(t_game *game)
 	while (i < game->rows)
 	{
 		if (game->map[i][0] != '1' || game->map[i][game->cols - 1] != '1')
-			ft_errormsg("Rows borders are not walls.\n");
+			close_game(game, "Rows borders are not walls.\n");
 		i++;
 	}
 	while (i < game->cols)
 	{
 		if (game->map[0][i] != '1' || game->map[game->rows - 1][i] != '1')
-			ft_errormsg("Columns borders are not walls.\n");
+			close_game(game, "Columns borders are not walls.\n");
 		i++;
 	}
 	if (game->map[game->rows - 1][i] != '\0' && \
@@ -97,7 +97,7 @@ void	element_parsing(t_game *game)
 			else if (game->map[i][j] == 'E')
 				game->exit++;
 			else if (game->map[i][j] != '1' && game->map[i][j] != '0')
-				ft_errormsg("Invalid element.\n");
+				close_game(game, "Invalid element.\n");
 			j++;
 		}
 		i++;
