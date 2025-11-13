@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
+/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 17:02:53 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 14:01:58 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/13 14:08:26 by babyf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	remove_nl(char *line)
 
 	len = ft_strlen(line);
 	while (line[len - 1] == '\n')
+	{
 		line[len - 1] = '\0';
+		len--;
+	}
 }
 
 int	map_len(t_game *game)
@@ -50,7 +53,7 @@ int	map_len(t_game *game)
 
 int	create_matrix(t_game *game)
 {
-	game->map = (char **) malloc((game->rows + 1) * sizeof(char **));
+	game->map = (char **) malloc((game->rows + 1) * sizeof(char *));
 	if (!game->map)
 	{
 		game->map = NULL;
@@ -79,11 +82,10 @@ char	**fill_map(t_game *game)
 		remove_nl(game->map[i]);
 		i++;
 		line = get_next_line(fd);
-		free (line);
 	}
 	game->map[i] = NULL;
 	close (fd);
-	free(line);
+	// free(line);
 	return (game->map);
 }
 
