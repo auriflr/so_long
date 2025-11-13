@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/19 17:03:34 by afloris           #+#    #+#             */
-/*   Updated: 2025/10/17 15:29:20 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/13 13:59:45 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	ft_strlen(const char *s)
 
 	len = 0;
 	while (s[len] != '\0')
-	{
 		len++;
-	}
 	return (len);
 }

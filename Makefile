@@ -1,5 +1,5 @@
 NAME = so_long
-CFLAGS = -Wall -Wextra -Werror -I/usr/include -I$(LIBFT_PATH)
+CFLAGS = gcc -Wall -Wextra -Werror -I/usr/include -I$(LIBFT_PATH)
 MLXFLAGS = -L$(MINILIBX_PATH) -lmlx -lXext -lX11 -lm
 MINILIBX_PATH = ./mlx
 MINILIBX = $(MINILIBX_PATH)/libmlx.a
@@ -12,29 +12,29 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
-	gcc $(OBJ) $(LIBFT) $(MINILIBX) -lXext -lX11 -lm -o $(NAME)
+	@$(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBX) -lXext -lX11 -lm -o $(NAME)
 	@echo "\033[0;32mso_long compiled OK! Hope you're ready to play!"
 
 %.o: %.c
-	gcc $(CFLAGS) -c $< -o $@
+	@$(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ)
-	make -C $(MINILIBX_PATH) clean
-	make -C $(LIBFT_PATH) clean
+	@$(RM) -f $(OBJ)
+	@$(MAKE) -C $(MINILIBX_PATH) clean
+	@$(MAKE) -C $(LIBFT_PATH) clean
 
 fclean: clean
-	rm -f $(NAME)
-	make -C $(MINILIBX_PATH) clean
-	make -C $(LIBFT_PATH) fclean
+	@$(RM) -f $(NAME)
+	@$(MAKE) -C $(MINILIBX_PATH) clean
+	@$(MAKE) -C $(LIBFT_PATH) fclean
 
 re: fclean all
 
 $(MINILIBX):
 	chmod 777 $(MINILIBX_PATH)
-	make -C $(MINILIBX_PATH)
+	@$(MAKE) -C $(MINILIBX_PATH)
 
 $(LIBFT):
-	make -C $(LIBFT_PATH)
+	@$(MAKE) -C $(LIBFT_PATH)
 
 .PHONY: all clean fclean re
