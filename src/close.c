@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:47:02 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 11:45:23 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/13 14:21:24 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,13 @@ int	key_manager(int keysym, t_game *game)
 int	destroy_all(t_game *game)
 {
 	free_graphics(game);
-	mlx_destroy_window(game->mlx, game->window);
-	mlx_destroy_display(game->mlx);
-	free(game->mlx);
+	if (game->mlx && game->window)
+		mlx_destroy_window(game->mlx, game->window);
+	if (game->mlx)
+	{
+		mlx_destroy_display(game->mlx);
+		free(game->mlx);
+	}
 	free_map(game);
 	free(game);
 	exit(EXIT_SUCCESS);
