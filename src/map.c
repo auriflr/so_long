@@ -6,12 +6,12 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 17:02:53 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 14:11:46 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/13 15:20:15 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-
+/* NORMINETTE: LOOK AT THE COMMENT: TEST AGAIN */
 void	remove_nl(char *line)
 {
 	int	len;
@@ -64,7 +64,7 @@ int	create_matrix(t_game *game)
 
 char	**fill_map(t_game *game)
 {
-	int 	fd;
+	int		fd;
 	int		i;
 	char	*line;
 
@@ -85,7 +85,7 @@ char	**fill_map(t_game *game)
 	}
 	game->map[i] = NULL;
 	close (fd);
-	// free(line);
+	/* free(line); */
 	return (game->map);
 }
 

@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 12:22:51 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/13 15:16:53 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_errormsg(const char *msg)
 t_game	*init_game(void)
 {
 	t_game	*game;
-	
+
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
 		return (NULL);

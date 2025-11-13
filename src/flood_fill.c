@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:20:53 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 17:49:16 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/13 15:16:32 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_matrix(char **matrix)
 			{
 				free_matrix(matrix);
 				return (-1);
-			}	
+			}
 			j++;
 		}
 		i++;
@@ -53,9 +53,10 @@ int	check_matrix(char **matrix)
 all the reachable tiles
 if an E tile is found, it marks it as F so the recursion stops there
 (or if a wall is met) */
+
 void	fill(char **matrix, int x, int y, t_game *game)
 {
-	if (x < 0 || y < 0 || x >= game->cols || y >=game->rows)
+	if (x < 0 || y < 0 || x >= game->cols || y >= game->rows)
 		return ;
 	if (matrix[x][y] == '1' || matrix[x][y] == 'F')
 		return ;

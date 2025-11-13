@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:25:16 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 14:29:08 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/13 15:25:14 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	is_closed(t_game *game)
 			close_game(game, "Columns borders are not walls.\n");
 		i++;
 	}
-	if (game->map[game->rows - 1][i] != '\0' && \
+	if (game->map[game->rows - 1][i] != '\0' &&
 		game->map[game->rows - 1][i] != '\n')
 		close_game(game, "Invalid map.\n");
 }
