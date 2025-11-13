@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 12:05:40 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/13 14:29:20 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,7 @@ typedef struct	s_graphics
 
 /* parsing & error handling */
 void	is_rectangular(t_game *game);
-void	is_closed(t_game *game);
-/* void	check_rows(t_game *game); */ 
+void	is_closed(t_game *game); 
 void	element_parsing(t_game *game);
 void	check_map(t_game *game);
 

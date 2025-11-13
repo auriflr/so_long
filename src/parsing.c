@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:25:16 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 14:23:50 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/13 14:29:08 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,6 @@ void	is_closed(t_game *game)
 		game->map[game->rows - 1][i] != '\n')
 		close_game(game, "Invalid map.\n");
 }
-
-/* checks that the last row is walls && the line ends properly */
-/* void	check_rows(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (i < game->cols)
-	{
-		if (game->map[game->rows - 1][i] != '1')
-			ft_errormsg(game, "Invalid map.\n");
-		i++;
-	}
-	if (game->map[game->rows - 1][i] != '\0' && \
-		game->map[game->rows - 1][i] != '\n')
-		ft_errormsg(game, "Invalid map.\n");
-} */ 
 
 /* checks if the elements inside the map are placed correctly */
 void	element_parsing(t_game *game)
