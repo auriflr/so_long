@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:25:16 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 12:16:57 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/13 13:30:48 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,5 @@ void	check_map(t_game *game)
 	is_rectangular(game);
 	element_parsing(game);
 	if (game->exit != 1 || game->collect < 1 || game->player != 1)
-			ft_errormsg( "Invalid element quantity.\n");
+		close_game(game, "Invalid element quantity.\n");
 }

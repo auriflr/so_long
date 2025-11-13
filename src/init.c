@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 12:05:56 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/13 12:22:51 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ void	ft_errormsg(const char *msg)
 {
 	ft_printf("Error:\n %s\n", msg);
 }
-// void	ft_errormsg(t_game *game, const char *msg)
-// {
-// 	ft_printf("Error:\n %s\n", msg);
-// 	if (game->map)
-// 		free (game->map);
-// }
 
 t_game	*init_game(void)
 {

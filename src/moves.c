@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   upnmove.c                                          :+:      :+:    :+:   */
+/*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:00:24 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 18:08:17 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/13 13:29:35 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void move_player(int keysym, t_game *game)
     update_position(keysym, game, &new_x, &new_y);
     if (game->map[new_y][new_x] == 'E' && game->score == game->collect)
         close_game(game, "WIN! ⭑.ᐟ\n");
-    if (game->map[new_y][new_x] == 'A')
-        close_game(game, "LOSS ( ╥ ﹏ ╥)\n");
+    // if (game->map[new_y][new_x] == 'A')
+    //     close_game(game, "LOSS ( ╥ ﹏ ╥)\n");
     else if (game->map[new_y][new_x] == 'E' && game->score != game->collect)
         close_game(game, "HEY! THE CAPTAIN NEEDS ALL THE MAPS! ( ◺˰◿ )\n");
     if (game->map[new_y][new_x] != '1' && game->map[new_y][new_x] != 'E')
