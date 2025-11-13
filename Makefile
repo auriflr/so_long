@@ -13,9 +13,12 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(MINILIBX) $(OBJ)
 	@$(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBX) -lXext -lX11 -lm -o $(NAME)
-	@echo "\033[0;32mso_long compiled OK! Hope you're ready to play!"
+	@printf "\n\033[0;37m"
+	@echo "\033[0;34mso_long compiled OK! Hope you're ready to play!"
+	@echo "\033[0;34mThe captain requested his kitten to retrieve all the maps. Have fun!"
 
 %.o: %.c
+	@mkdir -p $(dir $@)
 	@$(CFLAGS) -c $< -o $@
 
 clean:
