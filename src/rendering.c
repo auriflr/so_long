@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rendering.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 17:06:29 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 18:08:09 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/13 12:06:20 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,28 @@ void    set_graphics(t_game *game)
     int img_size;
 
     img_size = TILESIZE;
-    game->graphics->player = mlx_xpm_file_to_graphics(game->mlx, "graphics/player4.xpm", &img_size, &img_size);
+    game->graphics->player = mlx_xpm_file_to_image(game->mlx, "graphics/player.xpm", &img_size, &img_size);
     if (!game->graphics->player)
-        ft_errormsg(game, "Player graphics was not properly loaded.\n");
-    game->graphics->exit = mlx_xpm_file_to_graphics(game->mlx, "graphics/exit.xpm", &img_size, &img_size);
+        ft_errormsg("Player graphics was not properly loaded.\n");
+    game->graphics->exit = mlx_xpm_file_to_image(game->mlx, "graphics/exit.xpm", &img_size, &img_size);
     if(!game->graphics->exit)
-        ft_errormsg(game, "Exit graphics was not properly loaded.\n");
-    game->graphics->floor = mlx_xpm_file_to_graphics(game->mlx, "graphics/floor.xpm", &img_size, &img_size);
+        ft_errormsg("Exit graphics was not properly loaded.\n");
+    game->graphics->floor = mlx_xpm_file_to_image(game->mlx, "graphics/floor.xpm", &img_size, &img_size);
     if (!game->graphics->floor)
-        ft_errormsg(game, "Floor graphics was not properly loaded.\n");
-    game->graphics->collect = mlx_xpm_file_to_graphics(game->mlx, "graphics/collect.xpm", &img_size, &img_size);
+        ft_errormsg("Floor graphics was not properly loaded.\n");
+    game->graphics->collect = mlx_xpm_file_to_image(game->mlx, "graphics/collect.xpm", &img_size, &img_size);
     if (!game->graphics->collect)
-        ft_errormsg(game, "Collect graphics was not properly loaded");
-    game->graphics->wall = mlx_xpm_file_to_graphics(game->mlx, "graphics/walls.xpm", &img_size, &img_size);
+        ft_errormsg("Collect graphics was not properly loaded");
+    game->graphics->wall = mlx_xpm_file_to_image(game->mlx, "graphics/walls.xpm", &img_size, &img_size);
     if (!game->graphics->wall)
-        ft_errormsg(game, "Wall graphics was not loaded properly.\n");
+        ft_errormsg("Wall graphics was not loaded properly.\n");
 }
 
 void    put_graphics(t_game *game, void *graphics, int x, int y)
 {
     if (!graphics)
         close_game(game, "graphics loading went wrong.\n");
-    mlx_put_graphics_to_window(game->mlx, game->window, graphics, (x * TILESIZE), (y * TILESIZE));
+    mlx_put_image_to_window(game->mlx, game->window, graphics, (x * TILESIZE), (y * TILESIZE));
 }
 
 void    render_map(t_game *game, int i)

@@ -3,21 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:05:48 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 18:05:30 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/13 12:05:56 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	ft_errormsg(t_game *game, const char *msg)
+void	ft_errormsg(const char *msg)
 {
 	ft_printf("Error:\n %s\n", msg);
-	if (game->map)
-		free (game->map);
 }
+// void	ft_errormsg(t_game *game, const char *msg)
+// {
+// 	ft_printf("Error:\n %s\n", msg);
+// 	if (game->map)
+// 		free (game->map);
+// }
 
 t_game	*init_game(void)
 {

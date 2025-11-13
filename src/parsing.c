@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:25:16 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 16:55:55 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/13 12:04:48 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long"
+#include "../include/so_long.h"
 
 /* checks the shape of the map */
 void	is_rectangular(t_game *game)
@@ -21,9 +21,9 @@ void	is_rectangular(t_game *game)
 	i = 0;
 	while (i < game->rows - 1)
 	{
-		len = ft_strlen(game->map[i])
+		len = ft_strlen(game->map[i]);
 		if (len != game->cols)
-			ft_errormsg(game, "Map is not a valid shape.\n");
+			ft_errormsg("Map is not a valid shape.\n");
 		i++;
 	}
 	/*
@@ -43,18 +43,18 @@ void	is_closed(t_game *game)
 	while (i < game->rows)
 	{
 		if (game->map[i][0] != '1' || game->map[i][game->cols - 1] != '1')
-			ft_errormsg(game, "Rows borders are not walls.\n");
+			ft_errormsg("Rows borders are not walls.\n");
 		i++;
 	}
 	while (i < game->cols)
 	{
 		if (game->map[0][i] != '1' || game->map[game->rows - 1][i] != '1')
-			ft_errormsg(game, "Columns borders are not walls.\n");
+			ft_errormsg("Columns borders are not walls.\n");
 		i++;
 	}
 	if (game->map[game->rows - 1][i] != '\0' && \
 		game->map[game->rows - 1][i] != '\n')
-		ft_errormsg(game, "Invalid map.\n");
+		ft_errormsg("Invalid map.\n");
 }
 
 /* checks that the last row is walls && the line ends properly */
@@ -97,7 +97,7 @@ void	element_parsing(t_game *game)
 			else if (game->map[i][j] == 'E')
 				game->exit++;
 			else if (game->map[i][j] != '1' && game->map[i][j] != '0')
-				ft_errormsg(game, "Invalid element.\n");
+				ft_errormsg("Invalid element.\n");
 			j++;
 		}
 		i++;
@@ -107,9 +107,9 @@ void	element_parsing(t_game *game)
 void	check_map(t_game *game)
 {
 	is_closed(game);
-	check_rows(game);
+	/* check_rows(game); */
 	is_rectangular(game);
 	element_parsing(game);
 	if (game->exit != 1 || game->collect < 1 || game->player != 1)
-			ft_errormsg(game, "Invalid element quantity.\n");
+			ft_errormsg( "Invalid element quantity.\n");
 }

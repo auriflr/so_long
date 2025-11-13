@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 11:19:08 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 18:08:23 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/13 12:05:40 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	fill(char **matrix, int x, int y, t_game *game);
 void	flood_fill(t_game *game);
 
 /* initialize structs */
-void		ft_errormsg(t_game *game, const char *msg);
+void		ft_errormsg(const char *msg);
 t_game		*init_game(void);
 t_game		*create_struct(t_game *game);
 t_graphics	*init_graphics(void);

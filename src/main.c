@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: babyf <babyf@student.42.fr>                +#+  +:+       +#+        */
+/*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/12 18:04:44 by babyf            ###   ########.fr       */
+/*   Updated: 2025/11/13 12:04:12 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		main(int ac, char **av)
 	if (ac == 2)
 	{
 		if (!ft_strnstr(av[1] + ft_strlen(av[1]) - 4, ".ber", 4))
-			ft_errormsg(NULL, "Map must be a .ber file.");
+			ft_errormsg("Map must be a .ber file.");
 		game = init_game();
 		if (!game)
 			return(ft_printf("Map wasn't created.\n"), 0);
