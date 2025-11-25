@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 14:20:53 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 15:16:32 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/24 16:59:17 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int	check_matrix(char **matrix)
 	}
 	return (0);
 }
+
 /*a fill that starts from the player's position and marks 
 all the reachable tiles
 if an E tile is found, it marks it as F so the recursion stops there
 (or if a wall is met) */
-
 void	fill(char **matrix, int x, int y, t_game *game)
 {
 	if (x < 0 || y < 0 || x >= game->cols || y >= game->rows)

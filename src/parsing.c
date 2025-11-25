@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 16:25:16 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 15:25:14 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/25 15:23:36 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,15 @@ void	is_rectangular(t_game *game)
 	{
 		len = ft_strlen(game->map[i]);
 		if (len != game->cols)
-			ft_errormsg("Map is not a valid shape.\n");
+			close_game(game, "Map is not a valid shape.\n");
 		i++;
 	}
-	/*
 	if (game->cols == game->rows)
-		ft_errormsg(game, "Map is a square.\n");
-	*/
+		close_game(game, "Map is a square.\n");
 }
 
 /* checks that the borders of the map are all walls 
-and that the line ends properly 
-TEST */
+and that the line ends properly */
 void	is_closed(t_game *game)
 {
 	int	i;
@@ -90,7 +87,6 @@ void	element_parsing(t_game *game)
 void	check_map(t_game *game)
 {
 	is_closed(game);
-	/* check_rows(game); */
 	is_rectangular(game);
 	element_parsing(game);
 	if (game->exit != 1 || game->collect < 1 || game->player != 1)

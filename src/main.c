@@ -6,7 +6,7 @@
 /*   By: afloris <afloris@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 14:39:57 by babyf             #+#    #+#             */
-/*   Updated: 2025/11/13 15:18:54 by afloris          ###   ########.fr       */
+/*   Updated: 2025/11/25 16:20:35 by afloris          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int ac, char **av)
 		game->file = av[1];
 		read_map(game);
 		check_map(game);
+		flood_fill(game);
 		create_struct(game);
 		open_window(game);
 		render_map(game, 0);
